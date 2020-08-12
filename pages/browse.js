@@ -1,12 +1,15 @@
 import Layout from "../components/Layout";
 import Link from "next/link"
+import GameCard from "../components/GameCard";
 // require('dotenv').config()
 
 const Browse = ({games}) => (
     <Layout>
-        {games.map((game) => (
-            <p key={game.gameId}><Link href={`/browse/${game.gameId}`}><a>{game.name}</a></Link> is made by {game.developer.name}</p>
-        ))}
+        <div className="game-card">
+            {games.map((game) => (
+                <GameCard key={game.gameId} game={game}/>
+            ))}
+        </div>
     </Layout>
 )
 

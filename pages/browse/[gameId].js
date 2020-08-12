@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown"
 
 const Game = ({game}) => (
     <Layout>
-        <div className="page-game">
+        <div className="game-page">
             <GamePanel game={game}/>
             <GameDesc game={game}/>
             <DevPanel dev={game.developer}/>
@@ -40,33 +40,33 @@ function GamePanel({game}) {
     if (!game.android) {
         android = ''
     } else {
-        android = (game.android == "redacted")
+        android = (game.android === "redacted")
             ? "Redacted"
             : (<>
-                <p className="panel__field">Android</p>
-                <p className="panel__content"><a href={game.android}>{game.android}</a></p>
+                <p className="game-page__panel__field">Android</p>
+                <p className="game-page__panel__value"><a href={game.android} target="_blank">Link</a></p>
             </>)
     }
 
     if (!game.ios) {
         ios = ''
     } else {
-        ios = (game.ios == "redacted")
+        ios = (game.ios === "redacted")
             ? "Redacted"
             : (<>
-                <p className="panel__field">iOS</p>
-                <p className="panel__content"><a href={game.ios}>{game.ios}</a></p>
+                <p className="game-page__panel__field">iOS</p>
+                <p className="game-page__panel__value"><a href={game.ios} target="_blank">Link</a></p>
             </>)
     }
 
     return (
-        <div className="panel panel--side">
+        <div className="game-page__panel game-page__panel--game">
             <p><strong>Game Information</strong></p>
 
-            <p className="panel__field">Name</p>
-            <p className="panel__content">{game.name}</p>
-            <p className="panel__field">Release year</p>
-            <p className="panel__content">{game.releaseYear}</p>
+            <p className="game-page__panel__field">Name</p>
+            <p className="game-page__panel__value">{game.name}</p>
+            <p className="game-page__panel__field">Release year</p>
+            <p className="game-page__panel__value">{game.releaseYear}</p>
             {ios}
             {android}
         </div>
@@ -75,7 +75,7 @@ function GamePanel({game}) {
 
 function GameDesc({game}) {
     return (
-        <div className="panel panel--middle">
+        <div className="game-page__panel game-page__panel--desc">
             <img src={game.coverUrl}/>
             <div><ReactMarkdown source={game.description}/></div>
         </div>
@@ -88,9 +88,9 @@ function DevPanel({dev}) {
 
     if (dev.personnel.length > 0) {
         personnel = (<>
-            <p className="panel__field">Personnel</p>
+            <p className="game-page__panel__field">Personnel</p>
             {dev.personnel.map((person)=>(
-                <p className="panel__content">{person}</p>
+                <p className="game-page__panel__value">{person}</p>
             ))}
         </>)
     } else {
@@ -99,26 +99,26 @@ function DevPanel({dev}) {
 
     website = (dev.website)
         ? <>
-            <p className="panel__field">Website</p>
-            <p className="panel__content">{dev.website}</p>
+            <p className="game-page__panel__field">Website</p>
+            <p className="game-page__panel__value"><a href={dev.website} target="_blank">{dev.website}</a></p>
         </>
         : ''
 
     twitter = (dev.twitter)
         ? <>
-            <p className="panel__field">Twitter</p>
-            <p className="panel__content">{dev.twitter}</p>
+            <p className="game-page__panel__field">Twitter</p>
+            <p className="game-page__panel__value"><a href={`https://twitter.com/${dev.twitter}`} target="_blank">@{dev.twitter}</a></p>
         </>
         : ''
 
     return (
-        <div className="panel panel--side">
+        <div className="game-page__panel game-page__panel--dev">
             <p><strong>Developer Information</strong></p>
 
-            <p className="panel__field">Name</p>
-            <p className="panel__content">{dev.name}</p>
-            <p className="panel__field">Origin</p>
-            <p className="panel__content">{dev.origin}</p>
+            <p className="game-page__panel__field">Name</p>
+            <p className="game-page__panel__value">{dev.name}</p>
+            <p className="game-page__panel__field">Origin</p>
+            <p className="game-page__panel__value">{dev.origin}</p>
             {personnel}
             {website}
             {twitter}
