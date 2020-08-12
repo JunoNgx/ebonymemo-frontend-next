@@ -13,11 +13,15 @@ const Game = ({game}) => (
 
 export default Game
 
-export async function getStaticPaths() {
-    const res = await fetch(`${process.env.API_URL}/games/`)
+async function getFetchResult(_url) {
+    const res = await fetch(_url)
     const data = await res.json()
-    const games = data.result
+    return data.result
+}
 
+export async function getStaticPaths() {
+    
+    const games = await getFetchResult(`${process.env.API_URL}/games/`);
     const paths = games.map((game) => ({
         params: {gameId: game.gameId}
     }))
@@ -26,10 +30,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-    const res = await fetch(`${process.env.API_URl}/games/${params.gameId}`)
-    const data = await res.json()
-    const game = data.result
+    // const res = await fetch(`${process.env.API_URl}/games/${params.gameId}`)
+    // const data = await res.json()
+    // const game = data.result
 
+    const game = await getFetchResult(`${process.env.API_URL}/games/${params.gameId}`)
     return { props: {game}}
 }
 
