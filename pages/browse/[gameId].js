@@ -39,14 +39,17 @@ export async function getStaticProps({params}) {
 }
 
 function GamePanel({game}) {
-    let android, ios
+    let android, ios, featured
 
     // Formatting optional information that might not be available
     if (!game.android) {
         android = ''
     } else {
-        android = (game.android === "redacted")
-            ? "Redacted"
+        android = (game.android === "delisted")
+            ? (<>
+                <p className="game-page__panel__field">Android</p>
+                <p className="game-page__panel__value">The Android release of this game has been delisted and is not available at the moment</p>
+            </>)
             : (<>
                 <p className="game-page__panel__field">Android</p>
                 <p className="game-page__panel__value"><a href={game.android} target="_blank">Link</a></p>
@@ -56,13 +59,23 @@ function GamePanel({game}) {
     if (!game.ios) {
         ios = ''
     } else {
-        ios = (game.ios === "redacted")
-            ? "Redacted"
+        ios = (game.ios === "delisted")
+            ? (<>
+                <p className="game-page__panel__field">iOS</p>
+                <p className="game-page__panel__value">The iOS release of this game has been delisted and not available at the moment</p>
+            </>)
             : (<>
                 <p className="game-page__panel__field">iOS</p>
                 <p className="game-page__panel__value"><a href={game.ios} target="_blank">Link</a></p>
             </>)
     }
+
+    featured = (game.featured)
+        ? (<>
+            <p className="game-page__panel__field">Editor's Choice</p>
+            <p className="game-page__panel__value">This game is currently featured as an Editor's Choice</p>
+        </>)
+        : ''
 
     return (
         <div className="game-page__panel game-page__panel--game">
@@ -74,6 +87,7 @@ function GamePanel({game}) {
             <p className="game-page__panel__value">{game.releaseYear}</p>
             {ios}
             {android}
+            {featured}
         </div>
     )
 }
@@ -95,7 +109,7 @@ function DevPanel({dev}) {
         personnel = (<>
             <p className="game-page__panel__field">Personnel</p>
             {dev.personnel.map((person)=>(
-                <p className="game-page__panel__value">{person}</p>
+                <p className="game-page__panel__value" key={person}>{person}</p>
             ))}
         </>)
     } else {

@@ -3,6 +3,25 @@ $break-medium: 512px;
 $break-large: 1024px;
 $break-xlarge: 2048px;
 $mobile: media screen and (max-width: $break-medium);
+$fonts: 'Source Serif Pro', serif;
+
+%flex-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+%black-border {
+    border: solid 1px black;
+}
+
+a {
+    color: steelblue;
+    text-decoration: none;
+    font-family: $fonts;
+    &:visited {
+        color: chocolate;
+    }
+}
 
 html {
     font-size: 16px;
@@ -12,23 +31,90 @@ html {
 }
 
 body {
-    font-family: 'Source Serif Pro', serif;
+    font-family: $fonts;
     line-height: 1.4;
     max-width: $break-xlarge;
     // border: 1px solid red;
     // padding: 1rem;
     margin: 0 auto;
-    @media (max-width: $break-xlarge) {
+    @media screen and (max-width: $break-xlarge) {
         max-width: $break-large;
     }
-    @media (max-width: $break-large) {
+    @media screen and (max-width: $break-large) {
         // border: 1px solid blue;
         width: 100%;
     }
-    @media (max-width: $break-medium) {
-        // font-size: 20px;
-        // border: 1px solid green;
-        width: 100%;
+    // @media (max-width: $break-medium) {
+    //     // font-size: 20px;
+    //     // border: 1px solid green;
+    //     width: 100%;
+    // }
+}
+
+.navbar {
+    @extend %flex-between;
+    &__brand {
+        // @extend %black-border;
+        align-items: center;
+        font-size: 1.7rem;
+        margin: 0rem 0.5rem;
+    }
+    &__mbtn {
+        width: 0; 
+        height: 0; 
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 20px solid #000;
+        align-self: center;
+        margin: 0.5rem;
+        cursor: pointer;
+
+        display: none;
+
+        &--expanded {
+            border-top: none;
+            border-bottom: 20px solid #000;
+        }
+    }
+    &__links {
+        @extend %flex-between;
+        // @extend %black-border;
+        align-items: center;
+        margin: 0.5rem;
+        padding: 0;
+        &__link {
+            margin: 1rem;
+            list-style: none;
+        }
+    }
+    @media screen and (max-width: $break-large) {
+
+    }    
+    @media screen and (max-width: $break-medium) {
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        &__mbtn {
+            display: block;
+        }
+        &__links {
+            flex-direction: column;
+            justify-content: space-evenly;
+            display: none;
+            align-self: baseline;
+            flex-grow: 1;
+
+            &--expanded {
+                display: block;
+            }
+            &__link {
+                text-align: center;
+                // width: 300px;
+                align-self: center;
+                margin-bottom: 1px;
+                border-bottom: 1px solid black;
+            }
+        }
     }
 }
 
@@ -40,6 +126,98 @@ body {
     // right: 0;
     // height: 100px;
     // background-color: teal;
+}
+
+.game-card {
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    // justify-content: space-between;
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    // grid-gap: 0.5rem;
+
+    &:hover {
+
+    }
+    &__card {
+        margin: 0.5rem;
+        padding: 0.5rem;
+        @extend %black-border;
+        // flex-basis: 220px;
+        // flex: 1 1 220px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &__cover {
+            margin: 0 auto;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        &__title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 1rem 0 0 0;
+        }
+        &__subtitle {
+            margin: 0.5rem 0 1rem 0;
+        }
+        &__footer {
+            display: flex;
+            justify-content: space-between;
+
+            &__links {
+                display: flex;
+                justify-content: flex-between;
+                align-items: center;
+
+                &__link {
+                    margin: 0.2rem;
+
+                    &--delisted {
+                        text-decoration: line-through;
+                    }
+                }
+            }
+
+            &__cta {
+                margin: 0;
+                border: none;
+                background-color: steelblue;
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: 0.5s;
+                a {
+                    color: white;
+                }
+                &:hover {
+                    background-color: lightsteelblue;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: $break-xlarge) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    @media screen and (max-width: $break-large) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: $break-medium) {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1.5rem;
+    }
+    // &::after {
+    //     content: "";
+    //     flex: auto;
+    //     // &__card {
+    //     //     flex: 1 1 1;
+    //     //     flex-basis: 220px;
+    //     // }
+    //   }
 }
 
 .game-page {
@@ -63,7 +241,7 @@ body {
         width: 100%
     }
     &__panel {
-        border: 1px solid black;
+        @extend %black-border;
         margin: 2rem;
         padding: 1rem;
         &__field {
@@ -89,12 +267,12 @@ body {
         //     flex: 1 1;
         // }
     }
-    @media (max-width: $break-large) {
+    @media screen and (max-width: $break-large) {
         &__panel {
             margin: 0.5rem;
         }
     }    
-    @media (max-width: $break-medium) {
+    @media screen and (max-width: $break-medium) {
         grid-template-columns: 1fr;
         // grid-template-row: auto auto auto;
         &__panel {
@@ -134,80 +312,4 @@ body {
     //         }
     //     }
     // }
-}
-
-.game-card {
-    // display: flex;
-    // flex-direction: row;
-    // flex-wrap: wrap;
-    // justify-content: space-between;
-
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    // grid-gap: 0.5rem;
-
-    &__card {
-        margin: 0.5rem;
-        padding: 0.5rem;
-        border: 1px solid black;
-        // flex-basis: 220px;
-        // flex: 1 1 220px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        &__cover {
-            margin: 0 auto;
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-        &__title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin: 1rem 0 0 0;
-        }
-        &__subtitle {
-            margin: 0.5rem 0 1rem 0;
-        }
-        &__footer {
-            display: flex;
-            justify-content: space-between;
-
-            &__links {
-                display: flex;
-                justify-content: flex-evenly;
-
-                &__link {
-                    margin: 0.5rem;
-
-                    &--delisted {
-                        color: teal;
-                    }
-                }
-            }
-
-            &__cta {
-
-            }
-        }
-    }
-    @media (max-width: $break-xlarge) {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    @media (max-width: $break-large) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    @media (max-width: $break-medium) {
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 1.5rem;
-    }
-    // &::after {
-    //     content: "";
-    //     flex: auto;
-    //     // &__card {
-    //     //     flex: 1 1 1;
-    //     //     flex-basis: 220px;
-    //     // }
-    //   }
 }

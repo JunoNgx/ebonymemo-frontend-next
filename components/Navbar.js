@@ -1,18 +1,31 @@
 import Link from "next/link"
+import { useState } from "react"
 
-const Navbar = () => (
-    <div>
-        <>
-            <p><Link href={"/"}><a>Ebony Memo Logo</a></Link></p>
-        </>
-        <>
-            <ul>
-                <li><Link href="/browse"><a>Browse</a></Link></li>
-                <li><Link href="/manifesto"><a>Manifesto</a></Link></li>
-                <li><Link href="/faq"><a>FAQ</a></Link></li>
-            </ul>
-        </>
+export default function Navbar() {
+
+    const [stateIsExpanded, setStateIsExpanded] = useState(false)
+
+    function toggleExpand() {
+        setStateIsExpanded(isExpanded => !isExpanded)
+    }
+
+    let mBtnClassName = "navbar__mbtn", linksClassName = "navbar__links"
+    if (stateIsExpanded) {
+        mBtnClassName += " navbar__mbtn--expanded"
+        linksClassName += " navbar__links--expanded"
+    }
+
+    return (
+        <div className="navbar navbar--mobile">
+        <div className="navbar__brand">
+            <p><Link href={"/"}><a>{"{Ebony Memo}"}</a></Link></p>
+        </div>
+        <p className={mBtnClassName} onClick={toggleExpand}/>
+        <ul className={linksClassName}>
+            <li className="navbar__links__link"><Link href="/browse"><a>Browse</a></Link></li>
+            <li className="navbar__links__link"><Link href="/manifesto"><a>Manifesto</a></Link></li>
+            <li className="navbar__links__link"><Link href="/faq"><a>FAQ</a></Link></li>
+        </ul>
     </div>
-)
-
-export default Navbar
+    )
+}
