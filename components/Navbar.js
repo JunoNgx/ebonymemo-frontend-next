@@ -17,11 +17,11 @@ export default function Navbar() {
 
     return (
         <div className="navbar">
-            <p className="navbar__brand"><Link href={"/"}><a>{"{Ebony Memo}"}</a></Link></p>
+            <p className="navbar__brand"><Link href={"/browse"}><a>{"{Ebony Memo}"}</a></Link></p>
             {/* Button is only displayed in mobile layout */}
             <p className={mBtnClassName} onClick={toggleExpand}/>
             <ul className={linksClassName}>
-                <li className="navbar__links__link"><Link href="/browse"><a>Browse</a></Link></li>
+                <li className="navbar__links__link"><Link href="/"><a>Front page</a></Link></li>
                 <li className="navbar__links__link"><Link href="/manifesto"><a>Manifesto</a></Link></li>
                 <li className="navbar__links__link"><Link href="/faq"><a>FAQ</a></Link></li>
             </ul>
