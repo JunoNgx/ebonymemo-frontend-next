@@ -107,7 +107,7 @@ function DevPanel({dev}) {
 
     if (dev.personnel.length > 0) {
         personnel = (<>
-            <p className="game-page__panel__field">Personnel</p>
+            <p className="game-page__panel__field">Key Personnel</p>
             {dev.personnel.map((person)=>(
                 <p className="game-page__panel__value" key={person}>{person}</p>
             ))}
