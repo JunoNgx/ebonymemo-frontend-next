@@ -4,6 +4,9 @@ $break-large: 1024px;
 $break-xlarge: 2048px;
 $mobile: media screen and (max-width: $break-medium);
 $fonts: 'Source Serif Pro', serif;
+$transTime: 0.4s;
+$margin-desktop: 1rem;
+$margin-mobile: 0.5rem;
 
 %flex-between {
     display: flex;
@@ -38,7 +41,7 @@ body {
     // padding: 1rem;
     margin: 0 auto;
     @media screen and (max-width: $break-xlarge) {
-        max-width: $break-large;
+        max-width: 1280px;
     }
     @media screen and (max-width: $break-large) {
         // border: 1px solid blue;
@@ -57,7 +60,7 @@ body {
         // @extend %black-border;
         align-items: center;
         font-size: 1.7rem;
-        margin: 0rem 0.5rem;
+        margin: 0rem $margin-desktop;
     }
     &__mbtn {
         width: 0; 
@@ -66,9 +69,10 @@ body {
         border-right: 20px solid transparent;
         border-top: 20px solid #000;
         align-self: center;
-        margin: 0.5rem;
+        margin: $margin-desktop;
         cursor: pointer;
-        transition: 0.3s;
+        transition: $transTime;
+        user-select: none;
 
         display: none;
 
@@ -82,7 +86,7 @@ body {
         @extend %flex-between;
         // @extend %black-border;
         align-items: center;
-        margin: 0.5rem;
+        margin: $margin-desktop;
         padding: 0;
         &__link {
             margin: 1rem;
@@ -95,8 +99,13 @@ body {
     @media screen and (max-width: $break-medium) {
         flex-wrap: wrap;
         justify-content: space-between;
+        margin: $margin-mobile;
 
+        &__brand {
+            margin: $margin-mobile;
+        }
         &__mbtn {
+            margin: $margin-mobile;
             display: block;
         }
         &__links {
@@ -104,10 +113,11 @@ body {
             justify-content: space-evenly;
             align-self: baseline;
             flex-grow: 1;
+            margin: $margin-mobile;
             
             display: none;
             // opacity: 0;
-            transition: 0.3s ease;
+            transition: $transTime ease;
             // visibility: hidden;
             // transform: translate(0,-1000px);
             // translate: scale(2, 2);
@@ -154,18 +164,22 @@ body {
     grid-template-columns: repeat(8, 1fr);
     // grid-gap: 0.5rem;
 
-    &:hover {
-
-    }
     &__card {
-        margin: 0.5rem;
-        padding: 0.5rem;
+        margin: $margin-desktop;
+        padding: $margin-desktop;
         @extend %black-border;
         // flex-basis: 220px;
         // flex: 1 1 220px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        transition: $transTime;
+        &:hover {
+            border-width: 5px;
+            box-shadow: 0.5rem 0.5rem;
+            transform: translate(0, -1rem);
+        }
 
         &__cover {
             margin: 0 auto;
@@ -201,18 +215,29 @@ body {
 
             &__cta {
                 margin: 0;
-                border: none;
-                background-color: steelblue;
-                padding: 0.5rem 1rem;
-                font-size: 1rem;
-                cursor: pointer;
-                transition: 0.5s;
+                // margin: 0;
+                // border: none;
+                // display: block;
+                
+                // padding: 0.5rem 1rem;
+                // font-size: 1rem;
+                // cursor: pointer;
+                // transition: 0.5s;
                 a {
                     color: white;
+                    // display: inline-block;
+                    background-color: steelblue;
+                    padding: 0.5rem 1rem;
+                    transition: $transTime;
+                    &:hover {
+                        // background-color: lightsteelblue;
+                        background-color: black;
+                        // color: white;
+                        // padding: 0.5rem 1.5rem;
+                        // margin: 2rem 0;
+                    }
                 }
-                &:hover {
-                    background-color: lightsteelblue;
-                }
+
             }
         }
     }
@@ -221,10 +246,24 @@ body {
     }
     @media screen and (max-width: $break-large) {
         grid-template-columns: repeat(2, 1fr);
+        &__card {
+            margin: $margin-mobile;
+            padding: $margin-mobile;
+        }
     }
     @media screen and (max-width: $break-medium) {
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 1.5rem;
+        // No fanciful hover transitions on mobile
+        &__card {
+            // margin: 0.5rem;
+            // padding: 0.5rem;
+            &:hover {
+                border-width: 1px;
+                box-shadow: 0 0;
+                transform: none;
+            }
+        }
     }
     // &::after {
     //     content: "";
@@ -282,6 +321,7 @@ body {
         &--desc {
             grid-column: 2/3;
             grid-row: 1/3;
+            hyphens: auto;
         } 
         // &--large {
         //     flex: 3 1;
@@ -292,7 +332,7 @@ body {
     }
     @media screen and (max-width: $break-large) {
         &__panel {
-            margin: 0.5rem;
+            margin: $margin-mobile;
         }
     }    
     @media screen and (max-width: $break-medium) {

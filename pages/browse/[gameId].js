@@ -47,11 +47,11 @@ function GamePanel({game}) {
     } else {
         android = (game.android === "delisted")
             ? (<>
-                <p className="game-page__panel__field">Android</p>
+                <p className="game-page__panel__field">Android release</p>
                 <p className="game-page__panel__value"><em>The Android release of this game has been delisted and is not available at the moment</em></p>
             </>)
             : (<>
-                <p className="game-page__panel__field">Android</p>
+                <p className="game-page__panel__field">Android release</p>
                 <p className="game-page__panel__value"><a href={game.android} target="_blank">Link</a></p>
             </>)
     }
@@ -61,11 +61,11 @@ function GamePanel({game}) {
     } else {
         ios = (game.ios === "delisted")
             ? (<>
-                <p className="game-page__panel__field">iOS</p>
+                <p className="game-page__panel__field">iOS release</p>
                 <p className="game-page__panel__value"><em>The iOS release of this game has been delisted and not available at the moment</em></p>
             </>)
             : (<>
-                <p className="game-page__panel__field">iOS</p>
+                <p className="game-page__panel__field">iOS release</p>
                 <p className="game-page__panel__value"><a href={game.ios} target="_blank">Link</a></p>
             </>)
     }
