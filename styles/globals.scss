@@ -12,6 +12,7 @@ $break-xlarge: 2048px;
 $trans-time: 0.4s;
 $margin-desktop: 1rem;
 $margin-mobile: 0.5rem;
+$std-bor-wid: 2px;
 
 $bac-col: white;
 $pri-col: black;
@@ -50,7 +51,7 @@ $acc-col: lemonchiffon;
     justify-content: space-between;
 }
 %std-border {
-    border: solid 1px $pri-col;
+    border: solid $std-bor-wid $pri-col;
 }
 
 a {
@@ -357,9 +358,10 @@ body {
         // No fanciful hover transitions on mobile
         &__card {
             // margin: 0.5rem;
-            // padding: 0.5rem;
+            transition: none;
+            padding: 1rem;
             &:hover {
-                border-width: 1px;
+                border-width: $std-bor-wid;
                 box-shadow: 0 0;
                 transform: none;
             }
