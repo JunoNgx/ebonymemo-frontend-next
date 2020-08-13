@@ -358,10 +358,10 @@ body {
     @media screen and (max-width: $break-medium) {
         margin: $margin-mobile;
         grid-template-columns: repeat(1, 1fr);
-        grid-gap: 1.5rem;
+        // grid-gap: 1.5rem;
         // No fanciful hover transitions on mobile
         &__card {
-            // margin: 0.5rem;
+            margin: 1.5rem 0;
             transition: none;
             padding: 1rem;
             &:hover {
