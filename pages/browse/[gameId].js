@@ -48,7 +48,7 @@ function GamePanel({game}) {
         android = (game.android === "delisted")
             ? (<>
                 <p className="game-page__panel__field">Android</p>
-                <p className="game-page__panel__value">The Android release of this game has been delisted and is not available at the moment</p>
+                <p className="game-page__panel__value"><em>The Android release of this game has been delisted and is not available at the moment</em></p>
             </>)
             : (<>
                 <p className="game-page__panel__field">Android</p>
@@ -62,7 +62,7 @@ function GamePanel({game}) {
         ios = (game.ios === "delisted")
             ? (<>
                 <p className="game-page__panel__field">iOS</p>
-                <p className="game-page__panel__value">The iOS release of this game has been delisted and not available at the moment</p>
+                <p className="game-page__panel__value"><em>The iOS release of this game has been delisted and not available at the moment</em></p>
             </>)
             : (<>
                 <p className="game-page__panel__field">iOS</p>
@@ -79,7 +79,7 @@ function GamePanel({game}) {
 
     return (
         <div className="game-page__panel game-page__panel--game">
-            <p><strong>Game Information</strong></p>
+            <p className="game-page__panel__title">Game Information</p>
 
             <p className="game-page__panel__field">Name</p>
             <p className="game-page__panel__value">{game.name}</p>
@@ -132,8 +132,7 @@ function DevPanel({dev}) {
 
     return (
         <div className="game-page__panel game-page__panel--dev">
-            <p><strong>Developer Information</strong></p>
-
+            <p className="game-page__panel__title">Developer Information</p>
             <p className="game-page__panel__field">Name</p>
             <p className="game-page__panel__value">{dev.name}</p>
             <p className="game-page__panel__field">Origin</p>

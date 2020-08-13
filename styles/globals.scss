@@ -68,12 +68,14 @@ body {
         align-self: center;
         margin: 0.5rem;
         cursor: pointer;
+        transition: 0.3s;
 
         display: none;
 
         &--expanded {
-            border-top: none;
-            border-bottom: 20px solid #000;
+            transform: rotate(180deg);
+            // border-top: none;
+            // border-bottom: 20px solid #000;
         }
     }
     &__links {
@@ -87,9 +89,9 @@ body {
             list-style: none;
         }
     }
-    @media screen and (max-width: $break-large) {
+    // @media screen and (max-width: $break-large) {
 
-    }    
+    // }    
     @media screen and (max-width: $break-medium) {
         flex-wrap: wrap;
         justify-content: space-between;
@@ -100,19 +102,33 @@ body {
         &__links {
             flex-direction: column;
             justify-content: space-evenly;
-            display: none;
             align-self: baseline;
             flex-grow: 1;
+            
+            display: none;
+            // opacity: 0;
+            transition: 0.3s ease;
+            // visibility: hidden;
+            // transform: translate(0,-1000px);
+            // translate: scale(2, 2);
 
             &--expanded {
                 display: block;
+                // opacity: 1;
+                // transform: translate(0, 0px);
             }
             &__link {
+                // background-color: gray;
                 text-align: center;
                 // width: 300px;
                 align-self: center;
-                margin-bottom: 1px;
+                // margin-bottom: 2rem;
+                padding-bottom: 1rem;
                 border-bottom: 1px solid black;
+                // cursor: pointer;
+                Link {
+                    width: 100%
+                }
             }
         }
     }
@@ -244,11 +260,18 @@ body {
         @extend %black-border;
         margin: 2rem;
         padding: 1rem;
+        &__title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0 0 1.5rem 0;
+        }
         &__field {
             font-weight: bold;
+            margin: 0;
         }
         &__value {
             text-align: right;
+            margin: 0 0 0.5rem 0;
         }
         // &--game {
         //     // grid-column: 1/2;
