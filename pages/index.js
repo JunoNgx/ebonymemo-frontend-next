@@ -23,7 +23,7 @@ export default function Home ({featuredGames}) {
                 <div className="landing-page__intro">
                     <h1>Videogames are art.</h1>
                     <p>On computers, XBox, PlayStation, Famicom, GameCube, Wii, DS, Switch, and <strong>smartphones</strong>.</p>
-                    <p>Welcome to <strong>{"{Ebony Memo}"}</strong>, a videogame currator website exclusively for titles on smartphone devices. </p>
+                    <p>Welcome to <strong>{"{Ebony Memo}"}</strong>, an arthouse videogame currator website exclusively for titles on smartphone devices. </p>
                     <div className="landing-page__intro__cta-block">
                         <p className="landing-page__intro__cta-block__cta"><Link href="/manifesto"><a>Read the manifesto</a></Link></p>
                         <p className="landing-page__intro__cta-block__cta"><Link href="/browse"><a>Browse the collection</a></Link></p>
