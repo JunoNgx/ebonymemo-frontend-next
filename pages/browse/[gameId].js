@@ -79,7 +79,7 @@ function GamePanel({game}) {
 
     return (
         <div className="game-page__panel game-page__panel--game">
-            <p className="game-page__panel__title">Game Information</p>
+            <p className="game-page__panel__title">Game information</p>
 
             <p className="game-page__panel__field">Name</p>
             <p className="game-page__panel__value">{game.name}</p>
@@ -107,7 +107,7 @@ function DevPanel({dev}) {
 
     if (dev.personnel.length > 0) {
         personnel = (<>
-            <p className="game-page__panel__field">Key Personnel</p>
+            <p className="game-page__panel__field">Key personnel</p>
             {dev.personnel.map((person)=>(
                 <p className="game-page__panel__value" key={person}>{person}</p>
             ))}
@@ -132,7 +132,7 @@ function DevPanel({dev}) {
 
     return (
         <div className="game-page__panel game-page__panel--dev">
-            <p className="game-page__panel__title">Developer Information</p>
+            <p className="game-page__panel__title">Developer information</p>
             <p className="game-page__panel__field">Name</p>
             <p className="game-page__panel__value">{dev.name}</p>
             <p className="game-page__panel__field">Origin</p>

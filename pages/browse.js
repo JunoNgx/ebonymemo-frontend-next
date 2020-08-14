@@ -1,11 +1,11 @@
 import Layout from "../components/Layout";
-import Link from "next/link"
+// import Link from "next/link"
 import GameCard from "../components/GameCard";
 // require('dotenv').config()
 
 const Browse = ({games}) => (
     <Layout>
-        <div className="game-card">
+        <div className="browse-page">
             {games.map((game) => (
                 <GameCard key={game.gameId} game={game}/>
             ))}
@@ -26,7 +26,7 @@ export async function getStaticProps()  {
     return {
         props: {
             games,
-            // revalidate: 1200
+            revalidate: 1200
         }
     }
 }

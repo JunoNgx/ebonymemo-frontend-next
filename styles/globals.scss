@@ -55,14 +55,22 @@ $acc-col: lemonchiffon;
 %std-border {
     border: solid $std-bor-wid $pri-col;
 }
-
-a {
-    color: steelblue;
-    // text-decoration: none;
-    color: $pri-col;
-    font-family: $fonts;
-    &:visited {
+%cta-button {
+    a {
+        text-decoration: none;
         color: $pri-col;
+        // display: inline-block;
+        background-color: $acc-col;
+        padding: 0.5rem 1rem;
+
+        transition: $trans-time;
+        &:hover {
+            // background-color: lightsteelblue;
+            color: $bac-col;
+            background-color: $pri-col;
+            // padding: 0.5rem 1.5rem;
+            // margin: 2rem 0;
+        }
     }
 }
 
@@ -94,6 +102,16 @@ body {
     //     // border: 1px solid green;
     //     width: 100%;
     // }
+}
+
+a {
+    color: steelblue;
+    // text-decoration: none;
+    color: $pri-col;
+    font-family: $fonts;
+    &:visited {
+        color: $pri-col;
+    }
 }
 
 .navbar {
@@ -257,7 +275,51 @@ body {
     // background-color: teal;
 }
 
-.game-card {
+.landing-page {
+    display: flex;
+    align-items: center;
+    // grid-template-columns: 3fr 1fr;
+    // grid-gap: 2rem;
+    flex-wrap: wrap;
+    margin: $margin-desktop;
+    &__intro {
+        @extend %std-border;
+        flex-basis: 300px;
+        flex-grow: 2;
+        font-size: 1.5rem;
+        padding: $margin-desktop;
+        margin: 3rem;
+        &__cta-block {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            &__cta {
+                margin-left: 1rem;
+                @extend %cta-button;
+            }
+        }
+    }
+    &__feature {
+        flex-basis: 300px;
+        margin: auto;
+        &__title {
+            margin: $margin-desktop;
+        }
+    }
+    // @media screen and (max-width: $break-large) {
+    //     // grid-template-columns: 2fr 1fr;
+    // }
+    @media screen and (max-width: $break-medium) {
+        // grid-template-columns: 1fr;
+        margin: $margin-mobile;
+        &__intro {
+            font-size: 1rem;
+            margin: 0;
+        }
+    }
+}
+
+.browse-page {
     // display: flex;
     // flex-direction: row;
     // flex-wrap: wrap;
@@ -332,6 +394,7 @@ body {
                     // display: inline-block;
                     background-color: $acc-col;
                     padding: 0.5rem 1rem;
+
                     transition: $trans-time;
                     &:hover {
                         // background-color: lightsteelblue;
