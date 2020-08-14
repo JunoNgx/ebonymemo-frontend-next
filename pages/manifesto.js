@@ -60,8 +60,8 @@ export default function Manifesto() {
     
     return (
         <Layout>
-            <div className="manifesto-page">
-                <div className="manifesto-page__content">
+            <div className="text-page">
+                <div className="text-page__content">
                     <ReactMarkdown source={manifesto}/>
                 </div>
             </div>
