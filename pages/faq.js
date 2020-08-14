@@ -27,6 +27,16 @@ If a game has been delisted on your platform, please reach out to the developer 
 
 ----
 
+**Why is there no genre listed?**
+
+Besides the obvious answer is that, it takes a lot of work to design and implement, it is my deliberate choice.
+
+On top of that the fact I that personally dislike genre categorisation, the experimental nature of the games in this collection makes it very hard to do so, even if I want to. Also, as my effort to make my audiences more open-minded, all genre expectations are removed and I encourage you to try as much as you can.
+
+I am, however, open to the idea of genre categorisation if there is significant demand and a good design for it.
+
+----
+
 **Did the developer pay for their games to be listed on this website?**
 
 No.

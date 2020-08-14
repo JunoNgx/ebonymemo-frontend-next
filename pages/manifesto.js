@@ -41,7 +41,7 @@ Welcome to my massively over-engineered bookmark.
 
 # YOU
 
-I hope you find something interesting and enjoyable here.
+I hope you find something interesting here.
 
 If you think someone could benefit from this website, please share it with them.
 
@@ -51,7 +51,7 @@ But most of all, I hope you can be a more open-minded person after leaving this 
 
 And of course, with me having strongly advocated for open-mindedness so far, under no circumstance is my opinion here the absolute truth and fact. We can agree to disagree. If you have been playing Mobile Legends and PUBG and enjoy them, please continue. If you think mobile games are all trash, it is rightfully your entitled opinion. If you think I am pretentitous, you are probably not wrong, either.
 
-Neverthless, I hope you enjoy your visit here.
+Neverthless, I hope you enjoy your visit and I hope to see you again.
 
 Juno Nguyen
 `
