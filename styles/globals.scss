@@ -1,3 +1,8 @@
+// SCSS for EbonyMemo-frontend
+// made by Juno Nguyen
+
+// This SCSS file uses BEM naming convention for CSS
+
 // @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300;400;700&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
@@ -14,6 +19,7 @@ $margin-desktop: 1rem;
 $margin-mobile: 0.5rem;
 $std-bor-wid: 2px;
 $std-line-height: 1.5;
+$page-trans-time: 0.5s;
 
 $bac-col: white;
 $pri-col: black;
@@ -325,6 +331,7 @@ a {
     }
 }
 
+// This is shared by both manifesto and faq pages
 .text-page {
     // display: flex;
     line-height: $std-line-height;
@@ -576,6 +583,28 @@ a {
     //         &--large {
     //             order: 0;
     //         }
+    //     }
+    // }
+}
+
+
+
+
+.page-transition {
+    &-enter {
+        opacity: 0;
+        transform: translateY(200px);
+        &-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity $page-trans-time, transform $page-trans-time;
+        }
+    }
+    // &-exit {
+    //     transform: translateX(0px);
+    //     &-active {
+    //         transform: translateX(200px);
+    //         transition: transform 1s;
     //     }
     // }
 }
