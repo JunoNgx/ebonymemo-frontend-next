@@ -13,9 +13,9 @@ export default function Layout ({children}) {
                 <title>Ebony Memo</title>
             </Head>
             <Navbar/>
-            <PageTransition timeout={500} classNames="page-transition">
+            {/* <PageTransition timeout={500} classNames="page-transition"> */}
                 <AnimatedPortion children={children}/>
-            </PageTransition>
+            {/* </PageTransition> */}
         </div>
     )
 }
