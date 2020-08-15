@@ -9,9 +9,9 @@
     "postbuild": "next-on-netlify"
   },
   "dependencies": {
-    "dotenv": "^8.2.0",
     "next": "9.5.2",
     "next-on-netlify": "^2.3.2",
+    "normalize.css": "^8.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-markdown": "^4.3.1",
