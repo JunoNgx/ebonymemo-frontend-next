@@ -13,12 +13,18 @@ export default function Layout ({children}) {
                 <title>Ebony Memo</title>
             </Head>
             <Navbar/>
-            {/* <TransitionGroup> */}
-                <PageTransition key={router.pathname} timeout={1000}  classNames="page-transition">
-                    {children}
-                    <Footer/>
-                </PageTransition>
-            {/* </TransitionGroup> */}
+            <PageTransition key={router.pathname} timeout={500} classNames="page-transition">
+                <AnimatedPortion children={children}/>
+            </PageTransition>
         </div>
     )
 }
+
+// Workaround
+// Only one child allowed within PageTransition?
+const AnimatedPortion = ({children}) => (
+    <>
+        {children}
+        <Footer/>
+    </>
+)
