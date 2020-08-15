@@ -1,7 +1,7 @@
 import Layout from "../components/Layout"
 import ReactMarkdown from "react-markdown"
 
-const manifesto = 
+const content = 
 `
 # WHAT
 
@@ -62,7 +62,7 @@ export default function Manifesto() {
         <Layout>
             <div className="text-page">
                 <div className="text-page__content">
-                    <ReactMarkdown source={manifesto}/>
+                    <ReactMarkdown source={content}/>
                 </div>
             </div>
         </Layout>

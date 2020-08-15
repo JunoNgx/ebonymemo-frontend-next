@@ -55,7 +55,7 @@ $acc-col: lemonchiffon;
 %std-border {
     border: solid $std-bor-wid $pri-col;
 }
-%cta-button {
+%accented-button {
     a {
         text-decoration: none;
         color: $pri-col;
@@ -295,7 +295,7 @@ a {
             justify-content: flex-end;
             &__cta {
                 margin-left: 1rem;
-                @extend %cta-button;
+                @extend %accented-button;
             }
         }
     }
@@ -516,7 +516,16 @@ a {
             grid-row: 1/3;
             hyphens: auto;
             line-height: $std-line-height;
-        } 
+        }
+        &__button {
+            // background-color: $acc-col;
+            // @extend %std-border;
+            @extend %accented-button;
+            margin-top: 2rem;
+            a {
+                cursor: pointer;
+            }
+        }
         // &--large {
         //     flex: 3 1;
         // }

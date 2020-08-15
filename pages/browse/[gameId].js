@@ -1,17 +1,19 @@
 import Layout from "../../components/Layout"
 import ReactMarkdown from "react-markdown"
+import { useRouter } from "next/router"
+import Link from "next/link"
 
-const Game = ({game}) => (
-    <Layout>
-        <div className="game-page">
-            <GamePanel game={game}/>
-            <GameDesc game={game}/>
-            <DevPanel dev={game.developer}/>
-        </div>
-    </Layout>
-)
-
-export default Game
+export default function GamePage({game}){
+    return (
+        <Layout>
+            <div className="game-page">
+                <GamePanel game={game}/>
+                <GameDesc game={game}/>
+                <DevPanel dev={game.developer}/>
+            </div>
+        </Layout>
+    )
+}
 
 async function getFetchResult(_url) {
     const res = await fetch(_url)
@@ -48,7 +50,7 @@ function GamePanel({game}) {
         android = (game.android === "delisted")
             ? (<>
                 <p className="game-page__panel__field">Android release</p>
-                <p className="game-page__panel__value"><em>The Android release of this game has been delisted and is not available at the moment</em></p>
+                <p className="game-page__panel__value"><em>The Android release of this game has been delisted and is not available at the moment (read the faq for more information about this phenomenon)</em></p>
             </>)
             : (<>
                 <p className="game-page__panel__field">Android release</p>
@@ -62,7 +64,7 @@ function GamePanel({game}) {
         ios = (game.ios === "delisted")
             ? (<>
                 <p className="game-page__panel__field">iOS release</p>
-                <p className="game-page__panel__value"><em>The iOS release of this game has been delisted and not available at the moment</em></p>
+                <p className="game-page__panel__value"><em>The iOS release of this game has been delisted and not available at the moment (read the faq for more information about this phenomenon)</em></p>
             </>)
             : (<>
                 <p className="game-page__panel__field">iOS release</p>
@@ -93,10 +95,12 @@ function GamePanel({game}) {
 }
 
 function GameDesc({game}) {
+    const router = useRouter()
     return (
         <div className="game-page__panel game-page__panel--desc">
             <img src={game.coverUrl}/>
             <div><ReactMarkdown source={game.description}/></div>
+            <p className="game-page__panel__button"><a onClick={()=>router.back()}>Back</a></p>
         </div>
     )
 }
