@@ -16,9 +16,9 @@ export default function Layout ({children}) {
             {/* <TransitionGroup> */}
                 <PageTransition key={router.pathname} timeout={1000}  classNames="page-transition">
                     {children}
+                    <Footer/>
                 </PageTransition>
             {/* </TransitionGroup> */}
-            <Footer/>
         </div>
     )
 }
