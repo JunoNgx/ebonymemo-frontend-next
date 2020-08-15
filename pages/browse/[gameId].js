@@ -82,7 +82,6 @@ function GamePanel({game}) {
     return (
         <div className="game-page__panel game-page__panel--game">
             <p className="game-page__panel__title">Game information</p>
-
             <p className="game-page__panel__field">Name</p>
             <p className="game-page__panel__value">{game.name}</p>
             <p className="game-page__panel__field">Release year</p>
