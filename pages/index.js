@@ -30,7 +30,7 @@ export default function Home ({featuredGames}) {
                     </div>
                 </div>
                 <div className="landing-page__feature">
-                    <p className="landing-page__feature__title"><h2>Random feature:</h2></p>
+                    <div className="landing-page__feature__title"><h2>Random feature:</h2></div>
                     <GameCard game={randomFeaturedGame}/>
                 </div>
             </div>
@@ -39,7 +39,7 @@ export default function Home ({featuredGames}) {
 }
 
 export async function getStaticProps() {
-    const res = await fetch(`${process.env.API_URL}/games`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games`)
     const data = await res.json()
     const games = data.result
     const featuredGames = games.filter(game => game.featured)

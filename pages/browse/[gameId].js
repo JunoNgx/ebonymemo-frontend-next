@@ -23,7 +23,7 @@ async function getFetchResult(_url) {
 
 export async function getStaticPaths() {
     
-    const games = await getFetchResult(`${process.env.API_URL}/games/`);
+    const games = await getFetchResult(`${process.env.NEXT_PUBLIC_API_URL}/games/`);
     const paths = games.map((game) => ({
         params: {gameId: game.gameId}
     }))
@@ -36,7 +36,7 @@ export async function getStaticProps({params}) {
     // const data = await res.json()
     // const game = data.result
 
-    const game = await getFetchResult(`${process.env.API_URL}/games/${params.gameId}`)
+    const game = await getFetchResult(`${process.env.NEXT_PUBLIC_API_URL}/games/${params.gameId}`)
     return { props: {game}}
 }
 

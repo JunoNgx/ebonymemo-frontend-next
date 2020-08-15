@@ -71,6 +71,7 @@ $acc-col: lemonchiffon;
         // display: inline-block;
         background-color: $acc-col;
         padding: 0.5rem 1rem;
+        cursor: pointer;
 
         transition: $trans-time;
         &:hover {
@@ -258,10 +259,6 @@ a {
                         color: $bac-col;
                     }
                 }
-            //     // cursor: pointer;
-            //     Link {
-            //         width: 100%
-            //     }
             }
         }
     }
@@ -361,37 +358,33 @@ a {
 }
 
 .browse-page {
-    // display: flex;
-    // flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     // flex-wrap: wrap;
     // justify-content: space-between;
-
-    input {
-        @extend %std-border;
-        // border: red;
-        
-        padding: 0.5rem;
-    }
 
     &__control {
         // @extend %std-border;
         @extend %flex-between;
         margin: $margin-desktop;
+        align-self: stretch;
         // display: flex;
         // flex-direction: row;
         // justify-content: space-between;
         align-items: center;
         // width: 100%;
         &--search {
+            @extend %std-border;
+            padding: 0.5rem;
             // flex-grow: 2;
             flex-basis: 50%;
-            
+
         }
         &--select {
             // margin: 0rem 2rem;
             // flex-grow: 1;
         }
-
     }
     &__cards {
         display: grid;
@@ -461,6 +454,27 @@ a {
             }
         }
     }
+    &__more {
+        // margin: auto;
+        &__button {
+            @extend %accented-button;
+            // a {
+            //     background-color: black;
+            // }
+            // a {
+            //     text-decoration: none;
+            //     color: $pri-col;
+            //     background-color: $acc-col;
+            //     padding: 0.5rem 1rem;
+        
+            //     transition: $trans-time;
+            //     &:hover {
+            //         color: $bac-col;
+            //         background-color: $pri-col;
+            //     }
+            // }
+        }
+    }
     @media screen and (max-width: $break-xlarge) {
         &__cards {
             grid-template-columns: repeat(4, 1fr);
@@ -470,7 +484,7 @@ a {
         &__control {
             &--search {
                 flex-basis: 30%;
-                margin-right: 1rem;
+                // margin-right: 1rem;
             }
         }
         &__cards {
@@ -489,6 +503,7 @@ a {
             height: 7rem;
 
             &--search {
+                order: -1;
                 flex-basis: auto;
                 margin-right: 0;
                 // width: 100%;
@@ -575,9 +590,9 @@ a {
             // @extend %std-border;
             @extend %accented-button;
             margin-top: 2rem;
-            a {
-                cursor: pointer;
-            }
+            // a {
+            //     cursor: pointer;
+            // }
         }
         // &--large {
         //     flex: 3 1;
@@ -637,7 +652,7 @@ a {
 
 
 .page-transition {
-    &-enter {
+    &-appear {
         opacity: 0;
         transform: translateY(200px);
         &-active {

@@ -14,7 +14,11 @@ export default function Layout ({children}) {
             </Head>
             <Navbar/>
             {/* <PageTransition timeout={500} classNames="page-transition"> */}
-                <AnimatedPortion children={children}/>
+                {/* <AnimatedPortion children={children}/> */}
+                <>
+                    {children}
+                    <Footer/>
+                </>
             {/* </PageTransition> */}
         </div>
     )
