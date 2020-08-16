@@ -390,6 +390,10 @@ a {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
         &__card {
+            // justify-self: stretch;
+            // align-self: stretch;
+            min-height: 440px;
+
             margin: $margin-desktop;
             padding: $margin-desktop;
             @extend %std-border;
@@ -652,7 +656,7 @@ a {
 
 
 .page-transition {
-    &-appear {
+    &-enter {
         opacity: 0;
         transform: translateY(200px);
         &-active {
@@ -662,10 +666,10 @@ a {
         }
     }
     // &-exit {
-    //     transform: translateX(0px);
-    //     &-active {
-    //         transform: translateX(200px);
-    //         transition: transform 1s;
-    //     }
+    //     // transform: translateX(0px);
+    //     // &-active {
+    //     //     transform: translateX(200px);
+    //     //     transition: transform 1s;
+    //     // }
     // }
 }

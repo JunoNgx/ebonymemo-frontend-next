@@ -3,6 +3,7 @@ import Link from 'next/link'
 // import styles from '../styles/Home.module.css'
 import Layout from '../components/Layout'
 import GameCard from '../components/GameCard'
+import { PageTransition } from "next-page-transitions"
 
 export default function Home ({featuredGames}) {
 
@@ -19,21 +20,25 @@ export default function Home ({featuredGames}) {
     // console.log(featuredGames)
     return (
         <Layout>
-            <div className="landing-page">
-                <div className="landing-page__intro">
-                    <h1>Videogames are art.</h1>
-                    <p>On computers, XBox, PlayStation, Famicom, GameCube, Wii, DS, Switch, and <strong>smartphones</strong>.</p>
-                    <p>Welcome to <strong>{"{Ebony Memo}"}</strong>, an arthouse videogame curator website exclusively for mobile devices. </p>
-                    <div className="landing-page__intro__cta-block">
-                        <p className="landing-page__intro__cta-block__cta"><Link href="/manifesto"><a>Read the manifesto</a></Link></p>
-                        <p className="landing-page__intro__cta-block__cta"><Link href="/browse"><a>Browse the collection</a></Link></p>
+            <PageTransition timeout={500} classNames="page-transition">
+                <>
+                    <div className="landing-page">
+                        <div className="landing-page__intro">
+                            <h1>Videogames are art.</h1>
+                            <p>On computers, XBox, PlayStation, Famicom, GameCube, Wii, DS, Switch, and <strong>smartphones</strong>.</p>
+                            <p>Welcome to <strong>{"{Ebony Memo}"}</strong>, an arthouse videogame curator website exclusively for mobile devices. </p>
+                            <div className="landing-page__intro__cta-block">
+                                <p className="landing-page__intro__cta-block__cta"><Link href="/manifesto"><a>Read the manifesto</a></Link></p>
+                                <p className="landing-page__intro__cta-block__cta"><Link href="/browse"><a>Browse the collection</a></Link></p>
+                            </div>
+                        </div>
+                        <div className="landing-page__feature">
+                            <div className="landing-page__feature__title"><h2>Random feature:</h2></div>
+                            <GameCard game={randomFeaturedGame}/>
+                        </div>
                     </div>
-                </div>
-                <div className="landing-page__feature">
-                    <div className="landing-page__feature__title"><h2>Random feature:</h2></div>
-                    <GameCard game={randomFeaturedGame}/>
-                </div>
-            </div>
+                </>
+            </PageTransition>
         </Layout>
     )
 }

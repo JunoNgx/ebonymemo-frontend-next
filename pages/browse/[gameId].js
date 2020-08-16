@@ -2,15 +2,20 @@ import Layout from "../../components/Layout"
 import ReactMarkdown from "react-markdown"
 import { useRouter } from "next/router"
 import Link from "next/link"
+import PageTransition from "next-page-transitions/lib/PageTransition"
 
 export default function GamePage({game}){
     return (
         <Layout>
-            <div className="game-page">
-                <GamePanel game={game}/>
-                <GameDesc game={game}/>
-                <DevPanel dev={game.developer}/>
-            </div>
+            <PageTransition timeout={500} classNames="page-transition">
+                <>
+                    <div className="game-page">
+                        <GamePanel game={game}/>
+                        <GameDesc game={game}/>
+                        <DevPanel dev={game.developer}/>
+                    </div>
+                </>
+            </PageTransition>
         </Layout>
     )
 }

@@ -3,7 +3,9 @@ import GameCard from "../../components/GameCard";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 
-const gamePerPage = 4
+import { PageTransition } from "next-page-transitions"
+
+const gamePerPage = 8
 
 export default function Browse() {
 
@@ -103,7 +105,9 @@ export default function Browse() {
                 </div>
                 <div className="browse-page__cards">
                     {fetchedGames.map((game) => (
-                        <GameCard key={game.gameId} game={game}/>
+                        <PageTransition key={game.gameId} timeout={500} classNames="page-transition">
+                            <GameCard key={game.gameId} game={game}/>
+                        </PageTransition>
                     ))}
                 </div>
                 <div className="browse-page__more">

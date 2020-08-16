@@ -1,5 +1,6 @@
 import Layout from "../components/Layout"
 import ReactMarkdown from "react-markdown"
+import { PageTransition } from "next-page-transitions"
 
 const content = 
 `
@@ -60,11 +61,15 @@ export default function Manifesto() {
     
     return (
         <Layout>
-            <div className="text-page">
-                <div className="text-page__content">
-                    <ReactMarkdown source={content}/>
-                </div>
-            </div>
+            <PageTransition timeout={500} classNames="page-transition">
+                <>
+                    <div className="text-page">
+                        <div className="text-page__content">
+                            <ReactMarkdown source={content}/>
+                        </div>
+                    </div>
+                </>
+            </PageTransition>
         </Layout>
     )
 } 
