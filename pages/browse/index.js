@@ -1,16 +1,18 @@
 import Layout from "../../components/Layout";
 // import Link from "next/link"
 import GameCard from "../../components/GameCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 // require('dotenv').config()
 
-const gamePerPage = 2
+const gamePerPage = 3
 
 export default function Browse({games, last_page}) {
 
     const [fetchedGames, setFetchedGames] = useState(games)
-    const [pageCount, setPageCount] = useState(2)
+    const [currentPage, setCurrentPage] = useState(1)
     const [lastPage, setLastPage] = useState(last_page)
+    const isOnInitialRender = useRef(true)
+
     const [isFetching, setIsFetching] = useState(false)
     const [hasReachedLastPage, setHasReachedLastPage] = useState(false)
 
@@ -19,56 +21,118 @@ export default function Browse({games, last_page}) {
     
     const [searchQuery, setSearchQuery] = useState("")
 
-    useEffect(()=>{setIsFetching(false)}, [fetchedGames])
-    useEffect(()=>{refetch()}, [sortBy, sortOrder])
 
-    async function queryFetch() {
-        
-        if (pageCount >= lastPage) setHasReachedLastPage(true)
+    async function fetchWithQuery() {
+        setIsFetching(true);
 
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${pageCount}`)
-        console.log(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${pageCount}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
-
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
+        console.log(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
         const data = await res.json()
+
+        setLastPage(data.last_page)
         return data
     }
 
-    async function refetch() {
-        // console.log('refetch')
-        setPageCount(1)
-        setIsFetching(true)
-        setFetchedGames([])
-        console.log('page count:' + pageCount)
+    // Update UI status when fetching is completed
+    useEffect(()=>{setIsFetching(false)}, [fetchedGames])
 
-        const data = await queryFetch()
-        console.log("from refetch")
-        console.log(data)
-        setFetchedGames(data.result)
-        setLastPage(data.last_page)
+    // Fetch new data when user clicks on Show More
+    useEffect(() => {
+            async function loadMore() {
+
+            console.log('Current on page: ' + currentPage + ' ouf of ' + lastPage)
+            if (currentPage >= lastPage) setHasReachedLastPage(true)
+
+            // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
+            // console.log(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
+            // const data = await res.json()
+            const data = await fetchWithQuery()
+            
+            const newGames = data.result
+            setFetchedGames(oldGames => [...oldGames, ...newGames])
+        }
+        if (!isOnInitialRender.current) loadMore()
+    }, [currentPage])
+
+    // Clear current games and refetch upon change in sorting option
+    useEffect(()=> {
+        async function refetchForNewSort() {
+            console.log('sort changed')
+            setCurrentPage(1)
+            setHasReachedLastPage(false)
+
+            const data = await fetchWithQuery()
+
+        }
+        if (!isOnInitialRender.current) refetchForNewSort()
+    }, [sortBy, sortOrder])
+
+    function handleShowMoreClick() {
+        
+        // if (currentPage >= lastPage) {
+        //     setHasReachedLastPage(true)
+        // } else {
+        //     setCurrentPage(prevCount => prevCount + 1)
+        // } 
+        setCurrentPage(prevCount => prevCount + 1)
+        isOnInitialRender.current = false
     }
 
+    
     function handleSortByChange(e) {
         setSortBy(e.target.value)
+        isOnInitialRender.current = false
         // refetch()
     }
 
     function handleSortOrderChange(e) {
         setSortOrder(e.target.value)
+        isOnInitialRender.current = false
         // refetch()
     }
 
-    async function loadMore() {
-        setIsFetching(true)
-        setPageCount(prevCount => prevCount+1)
-        // console.log(pageCount)
+    // async function queryFetch() {
 
-        const data = await queryFetch()
-        const newGames = data.result
-        // console.log(newGames)
+    //     setCurrentPage(prevCount => prevCount+1)
+    //     console.log('page count++')
+    //     if (currentPage >= lastPage) setHasReachedLastPage(true)
 
-        setFetchedGames(oldGames => [...oldGames, ...newGames])
-        // setGames2(oldGames => [...oldGames, ...newGames])
-    }
+    //     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
+    //     console.log(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
+
+    //     const data = await res.json()
+    //     return data
+    // }
+
+    // async function refetch() {
+    //     // console.log('refetch')
+    //     // setPageCount(1)
+    //     setFetchedGames([])
+    //     setCurrentPage(1)
+    //     setIsFetching(true)
+    //     // setFetchedGames([])
+    //     // console.log('page count:' + pageCount)
+
+    //     const data = await queryFetch()
+    //     // console.log("from refetch")
+    //     // console.log(data)
+    //     setFetchedGames(data.result)
+    //     setLastPage(data.last_page)
+    // }
+
+    // async function loadMore() {
+    //     setIsFetching(true)
+    //     // setCurrentPage(prevCount => prevCount+1)
+    //     // console.log(pageCount)
+
+    //     const data = await queryFetch()
+    //     const newGames = data.result
+    //     // console.log(newGames)
+
+    //     setFetchedGames(oldGames => [...oldGames, ...newGames])
+    //     // setGames2(oldGames => [...oldGames, ...newGames])
+    // }
+
 
     return (
         <Layout>
@@ -92,7 +156,7 @@ export default function Browse({games, last_page}) {
                             <option value="desc">Descending</option>
                         </select>
                     </label>
-                    <input className="browse-page__control--search" value={searchQuery} onChange={(e)=>{setSearchQuery(e.target.value); refetch();}}placeholder="Search by game name here"/>                
+                    <input className="browse-page__control--search" value={searchQuery} onChange={(e)=>{setSearchQuery(e.target.value)}}placeholder="Search by game name here"/>                
                 </div>
                 <div className="browse-page__cards">
                     {fetchedGames.map((game) => (
@@ -104,7 +168,7 @@ export default function Browse({games, last_page}) {
                         ? <p>Loading. Please wait.</p>
                         : (hasReachedLastPage)
                             ? <p>There is no more data to show.</p>
-                            : <p className="browse-page__more__button" onClick={loadMore}><a>Show more</a></p>
+                            : <p className="browse-page__more__button" onClick={handleShowMoreClick}><a>Show more</a></p>
                     }
                 </div>
             </div>
@@ -114,7 +178,7 @@ export default function Browse({games, last_page}) {
 
 export async function getStaticProps()  {
  
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=1`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=1&sortBy=dateAdded&sortOrder=asc`)
     // const res = await fetch(`http://localhost:3001/.netlify/functions/server/games?limit=${gamePerPage}&page=1`)
     const data = await res.json()
     // const games = data.result
