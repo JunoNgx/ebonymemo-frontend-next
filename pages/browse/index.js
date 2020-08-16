@@ -1,17 +1,20 @@
 import Layout from "../../components/Layout";
 // import Link from "next/link"
 import GameCard from "../../components/GameCard";
-import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 // require('dotenv').config()
 
-const gamePerPage = 3
+const gamePerPage = 4
 
 export default function Browse({games, last_page}) {
 
     const [fetchedGames, setFetchedGames] = useState(games)
     const [currentPage, setCurrentPage] = useState(1)
     const [lastPage, setLastPage] = useState(last_page)
+    
     const isOnInitialRender = useRef(true)
+    const isTriggeredFromLMBtn = useRef(false)
+    const isTriggeredFromSortOptions = useRef(false)
 
     const [isFetching, setIsFetching] = useState(false)
     const [hasReachedLastPage, setHasReachedLastPage] = useState(false)
@@ -26,7 +29,7 @@ export default function Browse({games, last_page}) {
         setIsFetching(true);
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
-        console.log(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
+        // console.log(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
         const data = await res.json()
 
         setLastPage(data.last_page)
@@ -36,36 +39,51 @@ export default function Browse({games, last_page}) {
     // Update UI status when fetching is completed
     useEffect(()=>{setIsFetching(false)}, [fetchedGames])
 
-    // Fetch new data when user clicks on Show More
     useEffect(() => {
-            async function loadMore() {
+        // Fetch new data when user clicks on Show More
+        async function loadMore() {
+            isTriggeredFromLMBtn.current = false
 
-            console.log('Current on page: ' + currentPage + ' ouf of ' + lastPage)
+            // console.log('loadMore() is ran')
+            // console.log('Currently on page: ' + currentPage + ' ouf of ' + lastPage)
             if (currentPage >= lastPage) setHasReachedLastPage(true)
 
-            // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
-            // console.log(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
-            // const data = await res.json()
             const data = await fetchWithQuery()
-            
             const newGames = data.result
             setFetchedGames(oldGames => [...oldGames, ...newGames])
         }
-        if (!isOnInitialRender.current) loadMore()
-    }, [currentPage])
+        if (!isOnInitialRender.current && isTriggeredFromLMBtn.current) loadMore()
+    }, [currentPage, isTriggeredFromLMBtn.current])
 
-    // Clear current games and refetch upon change in sorting option
     useEffect(()=> {
-        async function refetchForNewSort() {
-            console.log('sort changed')
-            setCurrentPage(1)
+        // Clear current games
+        async function configureForNewSort() {
+            // console.log('configureForNewSort()')
+            isTriggeredFromSortOptions.current = true
+            // isTriggeredFromLMBtn.current = false
             setHasReachedLastPage(false)
+            setFetchedGames([])
+
+            // Will trigger the useEffect with currentPage as dependency
+            setCurrentPage(1)
+        }
+        if (!isOnInitialRender.current) configureForNewSort()
+    }, [sortBy, sortOrder])
+
+    useEffect(()=>{
+        // Refetch upon change in sorting option
+        async function fetchForNewSort() {
+            isTriggeredFromSortOptions.current = false
+
+            // console.log('fetchForNewSort()')
 
             const data = await fetchWithQuery()
-
+            const newGames = data.result
+            setFetchedGames(oldGames => [...oldGames, ...newGames])
         }
-        if (!isOnInitialRender.current) refetchForNewSort()
-    }, [sortBy, sortOrder])
+        if (!isOnInitialRender.current && isTriggeredFromSortOptions.current) fetchForNewSort()
+        // console.log('isTriggeredFromSort: ' + isTriggeredFromSortOptions.current)
+    }, [currentPage, isTriggeredFromSortOptions.current])
 
     function handleShowMoreClick() {
         
@@ -74,8 +92,10 @@ export default function Browse({games, last_page}) {
         // } else {
         //     setCurrentPage(prevCount => prevCount + 1)
         // } 
+        // console.log('Show More is clicked')
         setCurrentPage(prevCount => prevCount + 1)
         isOnInitialRender.current = false
+        isTriggeredFromLMBtn.current = true
     }
 
     
