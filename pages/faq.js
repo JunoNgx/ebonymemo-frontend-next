@@ -1,8 +1,11 @@
-import Layout from "../components/Layout"
+import Head from "next/head"
 import ReactMarkdown from "react-markdown"
 import { PageTransition } from "next-page-transitions"
 
-const content =
+import Layout from "../components/Layout"
+
+const PAGE_TITLE = "Ebony Memo | FAQs"
+const CONTENT =
 `
 ## Frequently asked questions
 
@@ -105,11 +108,15 @@ export default function Faq() {
     
     return (
         <Layout>
+            <Head>
+                <title>{PAGE_TITLE}</title>
+                <meta property="og:title" content={PAGE_TITLE} key="title"/>
+            </Head>
             <PageTransition timeout={500} classNames="page-transition">
                 <>
                     <div className="text-page">
                         <div className="text-page__content">
-                            <ReactMarkdown source={content}/>
+                            <ReactMarkdown source={CONTENT}/>
                         </div>
                     </div>
                 </>

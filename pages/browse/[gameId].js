@@ -1,14 +1,19 @@
-import Layout from "../../components/Layout"
-import ReactMarkdown from "react-markdown"
 import { useRouter } from "next/router"
-import Link from "next/link"
+import Head from "next/head"
+import ReactMarkdown from "react-markdown"
 import PageTransition from "next-page-transitions/lib/PageTransition"
+
+import Layout from "../../components/Layout"
 
 export default function GamePage({game}){
     return (
         <Layout>
             <PageTransition timeout={500} classNames="page-transition">
                 <>
+                    <Head>
+                        <title>{`Ebony Memo | ${game.name}`}</title>
+                        <meta property="og:title" content={`Ebony Memo | ${game.name}`} key="title"/>
+                    </Head>
                     <div className="game-page">
                         <GamePanel game={game}/>
                         <GameDesc game={game}/>

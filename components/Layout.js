@@ -1,16 +1,19 @@
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import Head from "next/head";
+import Navbar from "./Navbar"
+import Footer from "./Footer"
+import Head from "next/head"
 // import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { PageTransition } from "next-page-transitions"
 // import { useRouter } from "next/router";
 
+const PAGE_TITLE = "Ebony Memo"
+
 export default function Layout ({children}) {
     // const router = useRouter
     return (
-        <div>
+        <>
             <Head>
-                <title>Ebony Memo</title>
+                <title>{PAGE_TITLE}</title>
+                <meta property="og:title" content={PAGE_TITLE} key="title"/>
             </Head>
             <Navbar/>
             {/* <PageTransition timeout={500} classNames="page-transition"> */}
@@ -20,7 +23,7 @@ export default function Layout ({children}) {
                     <Footer/>
                 </>
             {/* </PageTransition> */}
-        </div>
+        </>
     )
 }
 

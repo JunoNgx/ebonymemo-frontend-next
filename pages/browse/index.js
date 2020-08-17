@@ -1,11 +1,13 @@
-import Layout from "../../components/Layout";
-import GameCard from "../../components/GameCard";
-import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/router";
-
+import { useState, useEffect, useRef } from "react"
+import { useRouter } from "next/router"
+import Head from "next/head"
 import { PageTransition } from "next-page-transitions"
 
-const gamePerPage = 8
+import Layout from "../../components/Layout"
+import GameCard from "../../components/GameCard"
+
+const PAGE_TITLE = "Ebony Memo | Catalogue"
+const GAME_PER_PAGE = 8
 
 export default function Browse() {
 
@@ -28,8 +30,8 @@ export default function Browse() {
     async function performFetch() {
         console.log('perform fetch')
         setIsFetching(true);
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}&searchName=${searchName}`)
-        // console.log(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${GAME_PER_PAGE}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}&searchName=${searchName}`)
+        // console.log(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${GAME_PER_PAGE}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
         const data = await res.json()
 
         // console.log(data)
@@ -81,6 +83,10 @@ export default function Browse() {
 
     return (
         <Layout>
+            <Head>
+                <title>{PAGE_TITLE}</title>
+                <meta property="og:title" content={PAGE_TITLE} key="title"/>
+            </Head>
             <div className="browse-page">
                 <div className="browse-page__control">
                     <label className="browse-page__control--select">

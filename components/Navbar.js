@@ -18,7 +18,7 @@ export default function Navbar() {
     return (
         <div className="navbar">
             <p className="navbar__brand"><Link href={"/browse"}><a>{"{Ebony Memo}"}</a></Link></p>
-            {/* Button is only displayed in mobile layout */}
+            {/* Expand button is only displayed in mobile layout */}
             <p className={mBtnClassName} onClick={toggleExpand}/>
             <ul className={linksClassName}>
                 <li className="navbar__links__link"><Link href="/"><a>Front page</a></Link></li>

@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
-// import styles from '../styles/Home.module.css'
+import { PageTransition } from "next-page-transitions"
+
 import Layout from '../components/Layout'
 import GameCard from '../components/GameCard'
-import { PageTransition } from "next-page-transitions"
+
+const PAGE_TITLE = "Ebony Memo | Welcome"
 
 export default function Home ({featuredGames}) {
 
@@ -20,6 +22,10 @@ export default function Home ({featuredGames}) {
     // console.log(featuredGames)
     return (
         <Layout>
+            <Head>
+                <title>{PAGE_TITLE}</title>
+                <meta property="og:title" content={PAGE_TITLE} key="title"/>
+            </Head>
             <PageTransition timeout={500} classNames="page-transition">
                 <>
                     <div className="landing-page">
