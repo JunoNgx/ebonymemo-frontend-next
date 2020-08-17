@@ -81,7 +81,7 @@ If you are on Steam, then curators are your best bet.
 
 If you are into weird indie games, then this website is partially inspired by [Warp Door](http://warpdoor.com/) and [forest ambassador](https://forestambassador.com/) (which is sadly no longer active, but you should be able to find interesting things there still).
 
-If you have a niche interest, then that's our of my expertise. Discoverability is a big issue these days.
+If you have a niche interest, then that's our of my expertise. Discoverability is a big issue these days, and even this site is just attempt to deal with it.
 
 ----
 

@@ -120,7 +120,7 @@ export default function Browse() {
                     {(isFetching)
                         ? <p>Loading. Please wait.</p>
                         : (currentPage >= lastPage)
-                            ? <p>There is no more data to show.</p>
+                            ? <p>Everything is already here.</p>
                             : <p className="browse-page__more__button" onClick={handleShowMoreClick}><a>Show more</a></p>
                     }
                 </div>

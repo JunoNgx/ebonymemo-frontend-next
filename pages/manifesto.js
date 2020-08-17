@@ -63,7 +63,9 @@ And of course, with me having strongly advocated for open-mindedness so far, und
 
 Neverthless, I hope you enjoy your visit and I hope to see you again.
 
-Juno Nguyen
+Regards,
+
+*Juno Nguyen*
 `
 
 export default function Manifesto() { 

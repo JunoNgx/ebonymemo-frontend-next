@@ -11,7 +11,7 @@ export default function GamePage({game}){
             <PageTransition timeout={500} classNames="page-transition">
                 <>
                     <Head>
-                        <title>{`Ebony Memo | ${game.name}`}</title>
+                        <title>{`Ebony Memo | ${game.name} by ${game.developer.name}`}</title>
                         <meta property="og:title" content={`Ebony Memo | ${game.name}`} key="title"/>
                     </Head>
                     <div className="game-page">

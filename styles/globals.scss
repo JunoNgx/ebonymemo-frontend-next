@@ -1,12 +1,12 @@
 // SCSS for EbonyMemo-frontend
 // made by Juno Nguyen
 
-// This SCSS file uses BEM naming convention for CSS
+// This project uses BEM naming convention for CSS
 
 // @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300;400;700&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
-$fonts: 'Roboto Condensed', serif;
+$fonts: 'Roboto Condensed', 'Arial', serif;
 
 $break-medium: 512px;
 $break-large: 1024px;
@@ -27,7 +27,6 @@ $page-trans-time: 0.5s;
 $bac-col: white;
 $pri-col: black;
 $acc-col: lemonchiffon;
-// $sec-col: grey;
 
 
 %navbar-item-transition {

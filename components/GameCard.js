@@ -6,7 +6,7 @@ export default function GameCard({game}) {
 
     if (game.android) {
         android = (game.android === "delisted")
-            ? <p className="browse-page__cards__card__footer__links__link browse-page__cards__cards__card__footer__links__link--delisted" title="This Android release of this game has unfortunately been delisted">And</p>
+            ? <p className="browse-page__cards__card__footer__links__link browse-page__cards__card__footer__links__link--delisted" title="This Android release of this game has unfortunately been delisted">And</p>
             : <p className="browse-page__cards__card__footer__links__link" title="Click to access the Android release of this game on the Google Play Store"><a href={game.android} target="_blank">And</a></p>
     } else {
         android = ''
