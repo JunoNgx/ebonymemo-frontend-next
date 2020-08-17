@@ -11,24 +11,10 @@ const PAGE_TITLE = "Ebony Memo | Welcome"
 export default function Home ({featuredGames}) {
 
     const [randomIndex, setRandomIndex] = useState(undefined)
-
-    // const randomIndex = Math.floor(Math.random() * featuredGames.length)
-    // const randomFeaturedGame = featuredGames[randomIndex]
-    // const randomFeaturedGame = featuredGames[Math.floor(Math.random() * featuredGames.length)]
-
-    // const keys = Object.keys(featuredGames)
-    // const randomIndex = Math.floor(Math.random() * keys.length)
-    // const randomFeaturedGame = featuredGames[randomIndex]
-
-    // console.log(randomFeaturedGame)
-    // const featuredGames = games.filter(game => game.featured)
-    // console.log(featuredGames)
+    
     useEffect(()=>{
         setRandomIndex(Math.floor(Math.random() * featuredGames.length))
     }, [featuredGames])
-
-    console.log(randomIndex)
-    // console.log(featuredGames[randomIndex].name)
 
     return (
         <Layout>

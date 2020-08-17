@@ -42,9 +42,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-    // const res = await fetch(`${process.env.API_URl}/games/${params.gameId}`)
-    // const data = await res.json()
-    // const game = data.result
 
     const game = await getFetchResult(`${process.env.NEXT_PUBLIC_API_URL}/games/${params.gameId}`)
     return { props: {game}}

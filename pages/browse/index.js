@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import { useRouter } from "next/router"
+// import { useRouter } from "next/router"
 import Head from "next/head"
 import { PageTransition } from "next-page-transitions"
 
@@ -11,37 +11,31 @@ const GAME_PER_PAGE = 8
 
 export default function Browse() {
 
-    const router = useRouter()
-
     const [fetchedGames, setFetchedGames] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [lastPage, setLastPage] = useState(2)
+    const [isFetching, setIsFetching] = useState(false)
     
     const isTriggeredFromSortOptions = useRef(false)
 
-    const [isFetching, setIsFetching] = useState(false)
-
     const [sortBy, setSortBy] = useState("dateAdded")
-    const [sortOrder, setSortOrder] = useState("asc")
-    
+    const [sortOrder, setSortOrder] = useState("desc")
     const [searchName, setSearchName] = useState("")
 
-    // Shorthand function
+    // Shorthand functions
     async function performFetch() {
-        console.log('perform fetch')
+        // console.log('perform fetch')
         setIsFetching(true);
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${GAME_PER_PAGE}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}&searchName=${searchName}`)
         // console.log(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${GAME_PER_PAGE}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
         const data = await res.json()
 
-        // console.log(data)
         setLastPage(data.last_page)
-
         setFetchedGames(oldGames => [...oldGames, ...data.result])
     }
-    function prepareNewFetch() {
+    function conditionedPerformFetch() {
         setFetchedGames([])
-        // If currentPage is 1, the hook for it won't be triggered as the value isn't changed
+        // If currentPage is already 1, the useEffect for it won't be triggered as the value doesn't changed
         if (currentPage !== 1) {setCurrentPage(1)} else {performFetch()}
     }
 
@@ -51,14 +45,11 @@ export default function Browse() {
 
     useEffect(()=>{
         if (isTriggeredFromSortOptions.current) {
-
             isTriggeredFromSortOptions.current = false
-            console.log('sort option changed')
-            prepareNewFetch()
+            conditionedPerformFetch()
         }
     }, [sortOrder, sortBy])
 
-    // Update UI status when fetching is completed
     useEffect(()=>{
         if (fetchedGames.length > 0) setIsFetching(false)
     }, [fetchedGames])
@@ -78,7 +69,7 @@ export default function Browse() {
     }
 
     function handleSearchSubmission() {
-        prepareNewFetch()
+        conditionedPerformFetch()
     }
 
     return (

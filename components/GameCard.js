@@ -24,7 +24,6 @@ export default function GameCard({game}) {
         ? <p className="browse-page__cards__card__footer__links__link" title="This game has at least one release outside of Apple App Store and Google Play Store">oth</p>
         : ''
 
-
     return (
         <div className="browse-page__cards__card">
             <img className="browse-page__cards__card__cover" src={game.coverUrl}/>
