@@ -1,18 +1,13 @@
 // SCSS for EbonyMemo-frontend
 // made by Juno Nguyen
-
 // This project uses BEM naming convention for CSS
 
-// @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300;400;700&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
 $fonts: 'Roboto Condensed', 'Arial', serif;
 
 $break-medium: 512px;
 $break-large: 1024px;
 $break-xlarge: 2048px;
-// $mobile: media screen and (max-width: $break-medium);
-// $fonts: 'Source Serif Pro', serif;
 
 $font-size-std: 16px;
 $font-size-mob: 20px;
@@ -28,7 +23,7 @@ $bac-col: white;
 $pri-col: black;
 $acc-col: lemonchiffon;
 
-
+// Shared properties
 %navbar-item-transition {
     transition: $trans-time;
     &:hover {
@@ -42,43 +37,29 @@ $acc-col: lemonchiffon;
         }
     }
 }
-// %navbar-item-transition-reset {
-//     transition: none;
-//     &:hover {
-//         background-color: $pri-col;
-//     }
-//     a {
-//         transition: 0;
-//         &:hover {
-//             padding: 0;
-//             color: $bac-col;
-//         }
-//     }
-// }
+
 %flex-between {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
 %std-border {
     border: solid $std-bor-wid $pri-col;
 }
+
 %accented-button {
     a {
         text-decoration: none;
         color: $pri-col;
-        // display: inline-block;
         background-color: $acc-col;
         padding: 0.5rem 1rem;
         cursor: pointer;
 
         transition: $trans-time;
         &:hover {
-            // background-color: lightsteelblue;
             color: $bac-col;
             background-color: $pri-col;
-            // padding: 0.5rem 1.5rem;
-            // margin: 2rem 0;
         }
     }
 }
@@ -101,23 +82,14 @@ body {
     background-color: $bac-col;
     color: $pri-col;
     font-family: $fonts;
-    // line-height: 1.4;
     max-width: $break-xlarge;
-    // border: 1px solid red;
-    // padding: 1rem;
     margin: 0 auto;
     @media screen and (max-width: $break-xlarge) {
         max-width: 1280px;
     }
     @media screen and (max-width: $break-large) {
-        // border: 1px solid blue;
         width: 100%;
     }
-    // @media (max-width: $break-medium) {
-    //     // font-size: 20px;
-    //     // border: 1px solid green;
-    //     width: 100%;
-    // }
 }
 
 a {
@@ -133,14 +105,13 @@ a {
 .navbar {
     @extend %flex-between;
     background-color: $pri-col;
-    // margin: 0rem $margin-desktop
     margin: $margin-desktop;
     a {
         text-decoration: none;
         color: $bac-col;
     }
+    // brand logo
     &__brand {
-        // @extend %black-border;
         display: inline-block;
         align-self: center;
         font-size: 2rem;
@@ -152,6 +123,7 @@ a {
         }
 
     }
+    // expand button for mobile
     &__mbtn {
         width: 0; 
         height: 0; 
@@ -168,13 +140,10 @@ a {
 
         &--expanded {
             transform: rotate(180deg);
-            // border-top: none;
-            // border-bottom: 20px solid #000;
         }
     }
     &__links {
         @extend %flex-between;
-        // @extend %black-border;
         align-items: center;
         margin: $margin-desktop;
         padding: 0;
@@ -185,9 +154,7 @@ a {
             @extend %navbar-item-transition;
         }
     }
-    // @media screen and (max-width: $break-large) {
 
-    // }    
     @media screen and (max-width: $break-medium) {
         flex-wrap: wrap;
         justify-content: space-between;
@@ -195,10 +162,7 @@ a {
         padding: 1rem 0.5rem;
 
         &__brand {
-            // margin: $margin-mobile;
             font-size: 1.5rem;
-            
-            // @extend %navbar-item-transition-reset;
             transition: none;
             &:hover {
                 background-color: $pri-col;
@@ -212,7 +176,6 @@ a {
             }
         }
         &__mbtn {
-            // margin: $margin-mobile;
             display: block;
         }
         &__links {
@@ -220,33 +183,18 @@ a {
             justify-content: space-evenly;
             align-self: baseline;
             flex-grow: 1;
-            // margin: $margin-mobile;
             
             display: none;
-            // position: absolute;
-            // opacity: 0;
-            // transition: opacity $trans-time ease 0.5s;
-            // overflow: hidden;
-            // visibility: hidden;
-            // transform: translate(0,-1000px);
-            // translate: scale(2, 2);
 
             &--expanded {
                 display: block;
-                // position: static;
-                // opacity: 1;
-                // transform: translate(0, 0px);
             }
             &__link {
-            //     // background-color: gray;
                 text-align: center;
-            //     // width: 300px;
-            //     // align-self: center;
-            //     // margin-bottom: 2rem;
                 padding: 0.5rem;
                 border-bottom: 1px solid $bac-col;
 
-                // @extend %navbar-item-transition-reset;
+                // removing transitions inherited from desktop layout
                 transition: none;
                 &:hover {
                     background-color: $pri-col;
@@ -278,20 +226,11 @@ a {
         padding: 1rem 2rem;
         background-color: $pri-col;
     }
-    
-    // position: absolute;
-    // bottom: 0;
-    // left: 0;
-    // right: 0;
-    // height: 100px;
-    // background-color: teal;
 }
 
 .landing-page {
     display: flex;
     align-items: center;
-    // grid-template-columns: 3fr 1fr;
-    // grid-gap: 2rem;
     flex-wrap: wrap;
     margin: $margin-desktop;
     &__intro {
@@ -318,11 +257,7 @@ a {
             margin: $margin-desktop;
         }
     }
-    // @media screen and (max-width: $break-large) {
-    //     // grid-template-columns: 2fr 1fr;
-    // }
     @media screen and (max-width: $break-medium) {
-        // grid-template-columns: 1fr;
         margin: $margin-mobile;
         &__intro {
             font-size: 1rem;
@@ -337,12 +272,10 @@ a {
     }
 }
 
-// This is shared by both manifesto and faq pages
+// This style is shared by both manifesto and faq pages
 .text-page {
-    // display: flex;
     line-height: $std-line-height;
     &__content {
-        // margin: $margin-desktop;
         padding: $margin-desktop;
         @extend %std-border;
         max-width: 500px;
@@ -360,37 +293,23 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    // flex-wrap: wrap;
-    // justify-content: space-between;
 
     &__control {
-        // @extend %std-border;
         @extend %flex-between;
         margin: $margin-desktop;
         align-self: stretch;
-        // display: flex;
-        // flex-direction: row;
-        // justify-content: space-between;
         align-items: center;
-        // width: 100%;
         &--search {
             @extend %std-border;
             padding: 0.5rem;
-            // flex-grow: 2;
             flex-basis: 50%;
 
-        }
-        &--select {
-            // margin: 0rem 2rem;
-            // flex-grow: 1;
         }
     }
     &__cards {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
         &__card {
-            // justify-self: stretch;
-            // align-self: stretch;
             min-height: 440px;
 
             margin: $margin-desktop;
@@ -446,7 +365,6 @@ a {
                         background-color: $acc-col;
                         padding: 0.5rem 1rem;
 
-                        // @extend %accented-button;
                         transition: $trans-time;
                         &:hover {
                             color: $bac-col;
@@ -458,24 +376,8 @@ a {
         }
     }
     &__more {
-        // margin: auto;
         &__button {
             @extend %accented-button;
-            // a {
-            //     background-color: black;
-            // }
-            // a {
-            //     text-decoration: none;
-            //     color: $pri-col;
-            //     background-color: $acc-col;
-            //     padding: 0.5rem 1rem;
-        
-            //     transition: $trans-time;
-            //     &:hover {
-            //         color: $bac-col;
-            //         background-color: $pri-col;
-            //     }
-            // }
         }
     }
     @media screen and (max-width: $break-xlarge) {
@@ -487,15 +389,10 @@ a {
         &__control {
             &--search {
                 flex-basis: 30%;
-                // margin-right: 1rem;
             }
         }
         &__cards {
             grid-template-columns: repeat(2, 1fr);
-            // &__card {
-            //     margin: 1rem $margin-mobile;
-            //     padding: $margin-mobile;
-            // }
         }
     }
     @media screen and (max-width: $break-medium) {
@@ -509,16 +406,10 @@ a {
                 order: -1;
                 flex-basis: auto;
                 margin-right: 0;
-                // width: 100%;
-                
-
             }
             &--select {
                 margin-left: 1rem;
             }
-            // &--width {
-            //     flex-grow:
-            // }
         }
         &__cards {
             margin: $margin-mobile;
@@ -540,22 +431,12 @@ a {
 }
 
 .game-page {
-    // display: flex;
-    // align-items: flex-start;
     max-width: 1024px;
     margin: 1rem auto;
-    // flex-flow: column wrap;
-    // align-items: flex-start;
-
     display: grid;
     justify-content: stretch;
     align-items: flex-start;
     grid-template-columns: 1fr 2fr;
-    // grid-template-rows: 1fr 1fr;
-    // grid-template-areas:
-    //     "game-page__panel--game game-page__panel--desc"
-    //     "game-page__panel--dev game-page__panel--desc";
-
     img {
         width: 100%
     }
@@ -576,12 +457,6 @@ a {
             text-align: right;
             margin: 0 0 0.5rem 0;
         }
-        // &--game {
-        //     // grid-column: 1/2;
-        // }
-        // &--dev {
-
-        // }
         &--desc {
             grid-column: 2/3;
             grid-row: 1/3;
@@ -589,20 +464,9 @@ a {
             line-height: $std-line-height;
         }
         &__button {
-            // background-color: $acc-col;
-            // @extend %std-border;
             @extend %accented-button;
             margin-top: 2rem;
-            // a {
-            //     cursor: pointer;
-            // }
         }
-        // &--large {
-        //     flex: 3 1;
-        // }
-        // &--small {
-        //     flex: 1 1;
-        // }
     }
     @media screen and (max-width: $break-large) {
         &__panel {
@@ -611,48 +475,14 @@ a {
     }    
     @media screen and (max-width: $break-medium) {
         grid-template-columns: 1fr;
-        // grid-template-row: auto auto auto;
         &__panel {
-            // &--game {
-            //     grid-row:1/2;
-            // }
             &--desc {
                 grid-column: 1/2;
                 grid-row: 2/3;
             } 
-            // &--dev {
-            //     grid-row:3/4;
-            // }
         }
     }    
-    // @media (max-width: $break-large) {
-    //     flex-direction: column;
-    //     flex-wrap: wrap;
-    //     &__panel {
-    //         &--large {
-    //             order: -1;
-    //             flex-basis: 84%
-    //         }
-    //         &--small {
-    //             flex-basis: 42%;
-    //             flex-grow: 2;
-    //         }
-    //     }
-    // }    
-    // @media (max-width: $break-medium) {
-    //     flex-direction: column;
-    //     flex-wrap: wrap;
-    //     align-items: stretch;
-    //     &__panel {
-    //         &--large {
-    //             order: 0;
-    //         }
-    //     }
-    // }
 }
-
-
-
 
 .page-transition {
     &-enter {
