@@ -44,7 +44,12 @@ export async function getStaticPaths() {
 export async function getStaticProps({params}) {
 
     const game = await getFetchResult(`${process.env.NEXT_PUBLIC_API_URL}/games/${params.gameId}`)
-    return { props: {game}}
+    return {
+        props: {
+            game
+        },
+        revalidate: 300
+    }
 }
 
 function GamePanel({game}) {
