@@ -1,6 +1,6 @@
 // SCSS for EbonyMemo-frontend
 // made by Juno Nguyen
-// This project uses BEM naming convention for CSS
+// This project uses the BEM naming convention for CSS
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
 $fonts: 'Roboto Condensed', 'Arial', serif;
@@ -94,7 +94,6 @@ body {
 
 a {
     color: steelblue;
-    // text-decoration: none;
     color: $pri-col;
     font-family: $fonts;
     &:visited {

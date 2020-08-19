@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react"
-// import { useRouter } from "next/router"
 import Head from "next/head"
 import { PageTransition } from "next-page-transitions"
 
@@ -8,22 +7,25 @@ import GameCard from "../../components/GameCard"
 
 const PAGE_TITLE = "Ebony Memo | Catalogue"
 const GAME_PER_PAGE = 8
+const DEFAULT_SORT_BY = "dateAdded"
+const DEFAULT_SORT_ORDER = "desc"
 
-export default function Browse() {
+export default function Browse({preFetchedGames, preFetchedLastPage}) {
 
-    const [fetchedGames, setFetchedGames] = useState([])
+    const [fetchedGames, setFetchedGames] = useState(preFetchedGames)
     const [currentPage, setCurrentPage] = useState(1)
-    const [lastPage, setLastPage] = useState(2)
+    const [lastPage, setLastPage] = useState(preFetchedLastPage)
     const [isFetching, setIsFetching] = useState(false)
     
     const isTriggeredFromSortOptions = useRef(false)
+    const isUsingPrefetchedGamesDataOnly = useRef(true)
 
-    const [sortBy, setSortBy] = useState("dateAdded")
-    const [sortOrder, setSortOrder] = useState("desc")
+    const [sortBy, setSortBy] = useState(DEFAULT_SORT_BY)
+    const [sortOrder, setSortOrder] = useState(DEFAULT_SORT_ORDER)
     const [searchName, setSearchName] = useState("")
 
     // Shorthand functions
-    async function performFetch() {
+    async function concatenateFetchResults() {
         // console.log('perform fetch')
         setIsFetching(true);
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${GAME_PER_PAGE}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}&searchName=${searchName}`)
@@ -33,20 +35,28 @@ export default function Browse() {
         setLastPage(data.last_page)
         setFetchedGames(oldGames => [...oldGames, ...data.result])
     }
-    function conditionedPerformFetch() {
+    function reFetch() {
         setFetchedGames([])
         // If currentPage is already 1, the useEffect for it won't be triggered as the value doesn't changed
-        if (currentPage !== 1) {setCurrentPage(1)} else {performFetch()}
+        if (currentPage !== 1) {
+            setCurrentPage(1)
+        } else {
+            // Go straight to the fetch function without using the trigger via currentPage
+            concatenateFetchResults()
+        }
     }
 
     useEffect(()=>{
-        performFetch()
+        // Preventing the first fetch upon initial render, it was already done by server-side
+        if (!isUsingPrefetchedGamesDataOnly.current) {
+            concatenateFetchResults()
+        }
     }, [currentPage])
 
     useEffect(()=>{
         if (isTriggeredFromSortOptions.current) {
             isTriggeredFromSortOptions.current = false
-            conditionedPerformFetch()
+            reFetch()
         }
     }, [sortOrder, sortBy])
 
@@ -56,20 +66,23 @@ export default function Browse() {
 
     function handleShowMoreClick() {
         setCurrentPage(prevCount => prevCount + 1)
+        isUsingPrefetchedGamesDataOnly.current = false
     }
     
     function handleSortByChange(e) {
         setSortBy(e.target.value)
         isTriggeredFromSortOptions.current = true
+        isUsingPrefetchedGamesDataOnly.current = false
     }
     
     function handleSortOrderChange(e) {
         setSortOrder(e.target.value)
         isTriggeredFromSortOptions.current = true
+        isUsingPrefetchedGamesDataOnly.current = false
     }
 
     function handleSearchSubmission() {
-        conditionedPerformFetch()
+        reFetch()
     }
 
     return (
@@ -118,4 +131,18 @@ export default function Browse() {
             </div>
         </Layout>
     )
+}
+
+export async function getStaticProps()  {
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${GAME_PER_PAGE}&page=1&sortBy=${DEFAULT_SORT_BY}&sortOrder=${DEFAULT_SORT_ORDER}`)
+    const data = await res.json()
+
+    return {
+        props: {
+            preFetchedGames: data.result,
+            preFetchedLastPage: data.last_page
+        },
+        revalidate: 300
+    }
 }
