@@ -63,6 +63,6 @@ export async function getStaticProps() {
         props: {
             featuredGames
         },
-        revalidate: 300
+        revalidate: 600
     }
 }

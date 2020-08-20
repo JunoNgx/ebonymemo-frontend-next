@@ -143,6 +143,6 @@ export async function getStaticProps()  {
             preFetchedGames: data.result,
             preFetchedLastPage: data.last_page
         },
-        revalidate: 300
+        revalidate: 600
     }
 }
