@@ -24,7 +24,7 @@ $pri-col: black;
 $acc-col: lemonchiffon;
 
 // Shared properties
-%navbar-item-transition {
+@mixin navbar-item-transition {
     transition: $trans-time;
     &:hover {
         background-color: $bac-col;
@@ -38,17 +38,17 @@ $acc-col: lemonchiffon;
     }
 }
 
-%flex-between {
+@mixin flex-between {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-%std-border {
+@mixin std-border {
     border: solid $std-bor-wid $pri-col;
 }
 
-%accented-button {
+@mixin accented-button {
     a {
         text-decoration: none;
         color: $pri-col;
@@ -102,7 +102,7 @@ a {
 }
 
 .navbar {
-    @extend %flex-between;
+    @include flex-between;
     background-color: $pri-col;
     margin: $margin-desktop;
     a {
@@ -116,7 +116,7 @@ a {
         font-size: 2rem;
         margin: 0rem 1rem;
         padding: 0;
-        @extend %navbar-item-transition;
+        @include navbar-item-transition;
         &:hover {
             background-color: $acc-col;
         }
@@ -142,7 +142,7 @@ a {
         }
     }
     &__links {
-        @extend %flex-between;
+        @include flex-between;
         align-items: center;
         margin: $margin-desktop;
         padding: 0;
@@ -150,7 +150,7 @@ a {
             font-size: 1.2rem;
             margin: 1rem;
             list-style: none;
-            @extend %navbar-item-transition;
+            @include navbar-item-transition;
         }
     }
 
@@ -233,7 +233,7 @@ a {
     flex-wrap: wrap;
     margin: $margin-desktop;
     &__intro {
-        @extend %std-border;
+        @include std-border;
         flex-basis: 300px;
         flex-grow: 2;
         font-size: 1.5rem;
@@ -245,7 +245,7 @@ a {
             justify-content: flex-end;
             &__cta {
                 margin-left: 1rem;
-                @extend %accented-button;
+                @include accented-button;
             }
         }
     }
@@ -276,7 +276,7 @@ a {
     line-height: $std-line-height;
     &__content {
         padding: $margin-desktop;
-        @extend %std-border;
+        @include std-border;
         max-width: 500px;
         margin: auto;
     }
@@ -294,12 +294,12 @@ a {
     align-items: center;
 
     &__control {
-        @extend %flex-between;
+        @include flex-between;
         margin: $margin-desktop;
         align-self: stretch;
         align-items: center;
         &--search {
-            @extend %std-border;
+            @include std-border;
             padding: 0.5rem;
             flex-basis: 50%;
 
@@ -313,7 +313,7 @@ a {
 
             margin: $margin-desktop;
             padding: $margin-desktop;
-            @extend %std-border;
+            @include std-border;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -376,7 +376,7 @@ a {
     }
     &__more {
         &__button {
-            @extend %accented-button;
+            @include accented-button;
         }
     }
     @media screen and (max-width: $break-xlarge) {
@@ -440,7 +440,7 @@ a {
         width: 100%
     }
     &__panel {
-        @extend %std-border;
+        @include std-border;
         margin: 2rem;
         padding: 1rem;
         &__title {
@@ -463,7 +463,7 @@ a {
             line-height: $std-line-height;
         }
         &__button {
-            @extend %accented-button;
+            @include accented-button;
             margin-top: 2rem;
         }
     }
