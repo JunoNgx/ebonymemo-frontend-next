@@ -227,6 +227,84 @@ a {
     }
 }
 
+.card {
+    min-height: 440px;
+    margin: $margin-desktop;
+    padding: $margin-desktop;
+    @include std-border;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    transition: $trans-time;
+    &:hover {
+        border-width: 5px;
+        box-shadow: 0.5rem 0.5rem;
+        transform: translate(0, -1rem);
+    }
+    &__cover {
+        &__featured-badge {
+            width: 20px;
+            height: 20px;
+            margin: 0.5rem;
+            background-color: $acc-col;
+            border: 2px solid $pri-col;
+            border-radius: 50%;
+            position: absolute;
+            right: 0;
+        }
+        &__img {
+            object-fit: cover;
+            width: 100%;
+            margin: 0 auto;
+            height: 300px; 
+        }
+        position: relative;
+    }
+    &__title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin: 1rem 0 0 0;
+    }
+    &__subtitle {
+        margin: 0.5rem 0 1rem 0;
+    }
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+
+        &__links {
+            display: flex;
+            justify-content: flex-between;
+            align-items: center;
+
+            &__link {
+                margin: 0.2rem;
+
+                &--delisted {
+                    text-decoration: line-through;
+                }
+            }
+        }
+
+        &__cta {
+            margin: 0;
+            a {
+                text-decoration: none;
+                color: $pri-col;
+                background-color: $acc-col;
+                padding: 0.5rem 1rem;
+
+                transition: $trans-time;
+                &:hover {
+                    color: $bac-col;
+                    background-color: $pri-col;
+                }
+            }
+        }
+    }
+}
+
 .landing-page {
     display: flex;
     align-items: center;
@@ -308,71 +386,6 @@ a {
     &__cards {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
-        &__card {
-            min-height: 440px;
-
-            margin: $margin-desktop;
-            padding: $margin-desktop;
-            @include std-border;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            transition: $trans-time;
-            &:hover {
-                border-width: 5px;
-                box-shadow: 0.5rem 0.5rem;
-                transform: translate(0, -1rem);
-            }
-            &__cover {
-                margin: 0 auto;
-                width: 100%;
-                height: 300px;
-                object-fit: cover;
-            }
-            &__title {
-                font-size: 1.3rem;
-                font-weight: bold;
-                margin: 1rem 0 0 0;
-            }
-            &__subtitle {
-                margin: 0.5rem 0 1rem 0;
-            }
-            &__footer {
-                display: flex;
-                justify-content: space-between;
-
-                &__links {
-                    display: flex;
-                    justify-content: flex-between;
-                    align-items: center;
-
-                    &__link {
-                        margin: 0.2rem;
-
-                        &--delisted {
-                            text-decoration: line-through;
-                        }
-                    }
-                }
-
-                &__cta {
-                    margin: 0;
-                    a {
-                        text-decoration: none;
-                        color: $pri-col;
-                        background-color: $acc-col;
-                        padding: 0.5rem 1rem;
-
-                        transition: $trans-time;
-                        &:hover {
-                            color: $bac-col;
-                            background-color: $pri-col;
-                        }
-                    }
-                }
-            }
-        }
     }
     &__more {
         &__button {
