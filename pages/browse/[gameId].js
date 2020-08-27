@@ -6,21 +6,31 @@ import PageTransition from "next-page-transitions/lib/PageTransition"
 import Layout from "../../components/Layout"
 
 export default function GamePage({game}){
+
+    const router = useRouter()
+
     return (
         <Layout>
-            <PageTransition timeout={500} classNames="page-transition">
-                <>
-                    <Head>
-                        <title>{`Ebony Memo | ${game.name} by ${game.developer.name}`}</title>
-                        <meta property="og:title" content={`Ebony Memo | ${game.name}`} key="title"/>
-                    </Head>
-                    <div className="game-page">
-                        <GamePanel game={game}/>
-                        <GameDesc game={game}/>
-                        <DevPanel dev={game.developer}/>
+            {(router.isFallback)
+                ? (<div className="game-page">
+                    <div className="game-page--loading">
+                        <p>Loading. Please wait.</p>
                     </div>
-                </>
-            </PageTransition>
+                </div>)
+                : (<PageTransition timeout={500} classNames="page-transition">
+                    <>
+                        <Head>
+                            <title>{`Ebony Memo | ${game.name} by ${game.developer.name}`}</title>
+                            <meta property="og:title" content={`Ebony Memo | ${game.name}`} key="title"/>
+                        </Head>
+                        <div className="game-page">
+                            <GamePanel game={game}/>
+                            <GameDesc game={game}/>
+                            <DevPanel dev={game.developer}/>
+                        </div>
+                    </>
+                </PageTransition>)
+            }
         </Layout>
     )
 }
@@ -38,7 +48,7 @@ export async function getStaticPaths() {
         params: {gameId: game.gameId}
     }))
 
-    return {paths, fallback: false}
+    return {paths, fallback: true}
 }
 
 export async function getStaticProps({params}) {
