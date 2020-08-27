@@ -303,6 +303,17 @@ a {
             }
         }
     }
+    @media screen and (max-width: $break-medium) {
+        // No fanciful hover transitions on mobile
+        margin: 1.5rem 0;
+        transition: none;
+        padding: 1rem;
+        &:hover {
+            border-width: $std-bor-wid;
+            box-shadow: 0 0;
+            transform: none;
+        }
+    }
 }
 
 .landing-page {
@@ -426,18 +437,6 @@ a {
         &__cards {
             margin: $margin-mobile;
             grid-template-columns: repeat(1, 1fr);
-
-            // No fanciful hover transitions on mobile
-            &__card {
-                margin: 1.5rem 0;
-                transition: none;
-                padding: 1rem;
-                &:hover {
-                    border-width: $std-bor-wid;
-                    box-shadow: 0 0;
-                    transform: none;
-                }
-            }
         }
     }
 }
