@@ -303,6 +303,31 @@ a {
             }
         }
     }
+    &__tooltip {
+        // display: none;
+
+        // transform: scale(0, 0);
+        // visibility: hidden;
+        transform: translateY(-20px);
+        height: 0;
+        opacity: 0;
+        transition: transform $trans-time, height $trans-time, opacity $trans-time;
+        p {
+            margin-bottom: 0;
+            padding: 0.5rem;
+            background-color: $pri-col;
+            color: $bac-col;
+        }
+        &--show {
+            // display: block;
+            transform: none;
+            height: auto;
+            opacity: 1;
+        }
+    }
+    &--has-tooltip {
+        cursor: pointer;
+    }
     @media screen and (max-width: $break-medium) {
         // No fanciful hover transitions on mobile
         margin: 1.5rem 0;
