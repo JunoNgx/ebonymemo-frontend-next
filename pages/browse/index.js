@@ -97,11 +97,12 @@ export default function Browse({preFetchedGames, preFetchedLastPage}) {
                         <a>Sort by: </a>
                         <select className="browse-page__control--sort-type" value={sortBy} onChange={handleSortByChange} >
                             <option value="dateAdded">Date Added</option>
+                            <option value="featured">Editor's Choice</option>
+                            <option value="random">Random</option>
+                            <option value="developer">Developer</option>
                             <option value="name">Name</option>
                             <option value="releaseYear">Release Year</option>
-                            <option value="developer">Developer</option>
                             <option value="other">Other Release</option>
-                            <option value="featured">Editor's Choice</option>
                         </select>
                     </label>
                     <label className="browse-page__control--select">
