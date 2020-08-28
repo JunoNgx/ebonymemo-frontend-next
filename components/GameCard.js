@@ -11,38 +11,14 @@ export default function GameCard({game}) {
     const [tooltipContent, setTooltipContent] = useState('')
     const [isTooltipShown, setIsTooltipShown] = useState(false)
 
-    // const badgeRef = useRef(null)
-    // const linksRef = useRef(null)
     const cardRef = useRef(null)
-
-    // function handleDelistedAndroidClick() {
-
-    // }
-
-    // function handleDelistediOSClick() {
-
-    // }
-
-    // function handleFeaturedBadgeClick() {
-
-    // }
-
-    // // function handleAnyClick(event) {
-    // //     // if (isTooltipShown === false) return
-    // //     if (badgeRef.current
-    // //     && linksRef.current
-    // //     && !badgeRef.current.contains(event.target)
-    // //     && !linksRef.current.contains(event.target)
-    // //     ) {
-    // //         setIsTooltipShown(false)
-    // //     }
-    // // }
 
     useEffect(()=>{
         function handleOutsideClick(event) {
             if (cardRef.current && !cardRef.current.contains(event.target)) {
                 setIsTooltipShown(false)
-                // Wait for transition animation for a less jarring experience
+                // Wait for css transition for a less jarring experience
+                // TODO rewrite transition with JS and use a proper callback
                 setTimeout(() => setTooltipContent(''), 300)
             }
         }
