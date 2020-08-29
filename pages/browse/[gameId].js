@@ -63,7 +63,7 @@ export async function getStaticProps({params}) {
 }
 
 function GamePanel({game}) {
-    let android, ios, featured
+    let android, ios, featured, other
 
     // Formatting optional information that might not be available
     if (!game.android) {
@@ -72,7 +72,7 @@ function GamePanel({game}) {
         android = (game.android === "delisted")
             ? (<>
                 <p className="game-page__panel__field">Android release</p>
-                <p className="game-page__panel__value"><em>The Android release of this game has been delisted and is not available at the moment (read the faq for more information about this phenomenon)</em></p>
+                <p className="game-page__panel__value"><em>The Android release of this game has been delisted and is not available at the moment (read the FAQ for more information about this phenomenon)</em></p>
             </>)
             : (<>
                 <p className="game-page__panel__field">Android release</p>
@@ -86,7 +86,7 @@ function GamePanel({game}) {
         ios = (game.ios === "delisted")
             ? (<>
                 <p className="game-page__panel__field">iOS release</p>
-                <p className="game-page__panel__value"><em>The iOS release of this game has been delisted and not available at the moment (read the faq for more information about this phenomenon)</em></p>
+                <p className="game-page__panel__value"><em>The iOS release of this game has been delisted and not available at the moment (read the FAQ for more information about this phenomenon)</em></p>
             </>)
             : (<>
                 <p className="game-page__panel__field">iOS release</p>
@@ -100,6 +100,12 @@ function GamePanel({game}) {
             <p className="game-page__panel__value">This game is currently featured as an Editor's Choice</p>
         </>)
         : ''
+    other = (game.other)
+        ? (<>
+            <p className="game-page__panel__field">Alternative release</p>
+            <p className="game-page__panel__value">This game has at least one release outside of Apple App Store and Google Play Store. Please read more from the game's description for more information.</p>
+        </>)
+        : ''
 
     return (
         <div className="game-page__panel game-page__panel--game">
@@ -111,6 +117,7 @@ function GamePanel({game}) {
             {ios}
             {android}
             {featured}
+            {other}
         </div>
     )
 }

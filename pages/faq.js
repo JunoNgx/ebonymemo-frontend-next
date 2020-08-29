@@ -9,9 +9,9 @@ const CONTENT =
 `
 ## Frequently asked questions
 
-**What does "And", "iOS", and "oth" on the game card mean?**
+**What does "And", "iOS", and "alt" on the game card mean?**
 
-These refer to the releases of the game. "And" and "iOS" are hyperlinked to the Google Play Store and Apple App Store, respectively. If you see "oth", it means that the game has at least a release outside of the two aforementioned store fronts (which is a fantastic thing!), usually Itch.io, web, Steam, Humble Store, or other console releases, which you can find in the game description page. If you see "And" or "iOS" being striken-through, the release has been delisted.
+These refer to the releases of the game. "And" and "iOS" are hyperlinked to the Google Play Store and Apple App Store, respectively. If you see "alt", it means that the game has at least a release outside of the two aforementioned store fronts (a fantastic thing!), which is usually Itch.io, web, Steam, Humble Store, or other console releases. You can find out more about this by clicking on the "Read More" button and reading from game description. If you see "And" or "iOS" being striken-through, the release has been delisted.
 
 For information on delisted releases, see the question below.
 

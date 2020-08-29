@@ -53,7 +53,7 @@ export default function GameCard({game}) {
     }
 
     other = (game.other)
-        ? <p className="card__footer__links__link card--has-tooltip" title={TOOLTIP_DELISTED_OTHER} onClick={(e)=>controlTooltipDisplay(TOOLTIP_DELISTED_OTHER)}>oth</p>
+        ? <p className="card__footer__links__link card--has-tooltip" title={TOOLTIP_DELISTED_OTHER} onClick={(e)=>controlTooltipDisplay(TOOLTIP_DELISTED_OTHER)}>alt</p>
         : ''
 
     tooltipClass = "card__tooltip"
