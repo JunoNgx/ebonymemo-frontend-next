@@ -1,36 +1,40 @@
-# Ebony Memo Content-delivery application
+# Ebony Memo - Frontend
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This application provides the visitor-facing frontend GUI for [Ebony Memo](https://ebonymemo.com/), an arthouse videogame curator website for smartphones. For the remaining components:
+* [View the backend source](https://github.com/JunoNgx/ebonymemo-backend-nodejs).
+* [View the content management application source](https://github.com/JunoNgx/ebonymemo-admin-reactjs).
+
+## Current deployment
+
+This application is currently deployed for production via [Vercel](https://vercel.com/) at [EbonyMemo.com](https://ebonymemo.com/).
+
+## Tech stack
+
+This application is powered by [NextJS](https://nextjs.org/) and [SASS](https://sass-lang.com/) for optimal user experience and SEO. The vast majority of the content are server-side rendered, saving for on-demand frontend fetching by users and newly created pages, which are generated on request. For more information, see [`fallback`](https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required) and [Incremental Static Regeneration](https://arunoda.me/blog/what-is-nextjs-issg) at NextJS documentation.
 
 ## Environment variables
 
-* `API_URL`
+`NEXT_PUBLIC_API_URL`: url to backend API.
 
-## Getting Started
+This is setup in `next.config.js`; however, .env.local` is necessary for local deployment.
 
-First, run the development server:
+## NextJS
 
-```bash
-npm run dev
-# or
-yarn dev
+For more information on the framework, visit [NextJS documentation](https://nextjs.org/docs/getting-started).
+
+## Local deployment
+
+First, clone the repository and move into the directory:
 ```
+git clone https://github.com/JunoNgx/ebonymemo-frontend-next.git
+cd ebonymemo-frontend-next
+```
+Then, setup the environment variables in `.env.local` and run the developement server:
+```
+npm run dev
+```
+[http://localhost:3000](http://localhost:3000) should then be accessible from your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contribution
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+For suggestions and  criticism, please feel free to open an issue for this repository.
