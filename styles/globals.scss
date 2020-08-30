@@ -521,6 +521,24 @@ a {
     }    
 }
 
+.error-page {
+    color: #FCFFFF;
+    background-image: linear-gradient(to top, #D68A44 35%, #D6AD71 35% 100%);
+    min-height: 640px;
+    margin: $margin-desktop;
+    display: flex;
+    justify-content: center;
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        flex-basis: 15rem;
+    }
+    @media screen and (max-width: $break-medium) {
+        margin: $margin-mobile;
+    }
+}
+
 .page-transition {
     &-enter {
         opacity: 0;
