@@ -24,7 +24,7 @@ export default function GameCard({game}) {
         }
 
         document.addEventListener('mousedown', handleOutsideClick)
-        return () => {
+        return function cleanup() {
             document.removeEventListener('mousedown', handleOutsideClick)
         }
     }, [cardRef])
