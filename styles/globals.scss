@@ -510,12 +510,13 @@ a {
     }
     @media screen and (max-width: $break-large) {
         &__panel {
-            margin: $margin-mobile;
+            margin: $margin-mobile $margin-desktop;
         }
     }    
     @media screen and (max-width: $break-medium) {
         grid-template-columns: 1fr;
         &__panel {
+            margin: $margin-mobile;
             &--desc {
                 grid-column: 1/2;
                 grid-row: 2/3;
