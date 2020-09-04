@@ -531,11 +531,14 @@ a {
     margin: $margin-desktop;
     display: flex;
     justify-content: center;
+
     &__content {
+        font-size: 16px;
+        margin: 1rem;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        flex-basis: 15rem;
+        max-width: 18em;
     }
     @media screen and (max-width: $break-medium) {
         margin: $margin-mobile;
