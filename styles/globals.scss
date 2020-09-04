@@ -224,14 +224,19 @@ a {
     text-align: center;
     line-height: 2;
     color: $bac-col;
-    margin: 1rem auto;
+    margin: $margin-desktop;
     a {
         color: $bac-col;
     }
     p {
-        margin: auto;
         padding: 1rem 2rem;
         background-color: $pri-col;
+    }
+    @media screen and (max-width: $break-medium) {
+        margin: $margin-mobile;
+        p {
+            padding: 0.8rem 1.2rem;
+        }
     }
 }
 
@@ -348,7 +353,14 @@ a {
 
     // Optimizing for xs screen (sub-iPhone5)
     @media screen and (max-width: 320px) {
-        padding: 0.5rem;
+        padding: 0.4rem;
+        &__footer {
+            &__cta {
+                a {
+                    padding: 0.2rem 0.35rem;
+                }
+            }
+        }
     }
 }
 
