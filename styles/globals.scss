@@ -161,7 +161,8 @@ a {
         padding: 1rem 0.5rem;
 
         &__brand {
-            font-size: 1.5rem;
+            margin: 0.2rem;
+            font-size: 1.4rem;
             transition: none;
             &:hover {
                 background-color: $pri-col;
@@ -206,6 +207,13 @@ a {
                     }
                 }
             }
+        }
+    }
+
+    // For Galaxy Fold, the only device listed in Chrome Dev Tools that did not look good
+    @media screen and (max-width: 280px) {
+        &__brand {
+            font-size: 1.2rem;
         }
     }
 }
@@ -336,6 +344,11 @@ a {
             box-shadow: none;
             transform: none;
         }
+    }
+
+    // Optimizing for xs screen (sub-iPhone5/320px)
+    @media screen and (max-width: 320px) {
+        padding: 0.5rem;
     }
 }
 
