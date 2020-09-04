@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from "react"
 import Head from "next/head"
 import { PageTransition } from "next-page-transitions"
 
-import Layout from "../../components/Layout"
-import GameCard from "../../components/GameCard"
+import Layout from "../components/Layout"
+import GameCard from "../components/GameCard"
 
 const PAGE_TITLE = "Ebony Memo | Catalogue"
-const GAME_PER_PAGE = 8
+const DEFAULT_GAME_PER_PAGE = 8
 const DEFAULT_SORT_BY = "dateAdded"
 const DEFAULT_SORT_ORDER = "desc"
 
@@ -22,14 +22,16 @@ export default function Browse({preFetchedGames, preFetchedLastPage}) {
 
     const [sortBy, setSortBy] = useState(DEFAULT_SORT_BY)
     const [sortOrder, setSortOrder] = useState(DEFAULT_SORT_ORDER)
+    const [gamePerPage, setgamePerPage] = useState(DEFAULT_GAME_PER_PAGE)
     const [searchName, setSearchName] = useState("")
 
     // Shorthand functions
     async function concatenateFetchResults() {
         // console.log('perform fetch')
         setIsFetching(true);
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${GAME_PER_PAGE}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}&searchName=${searchName}`)
-        // console.log(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${GAME_PER_PAGE}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
+        const FETCH_URL = `${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}&searchName=${searchName}`
+        console.log(FETCH_URL)
+        const res = await fetch(FETCH_URL)
         const data = await res.json()
 
         setLastPage(data.last_page)
@@ -58,7 +60,7 @@ export default function Browse({preFetchedGames, preFetchedLastPage}) {
             isTriggeredFromSortOptions.current = false
             reFetch()
         }
-    }, [sortOrder, sortBy])
+    }, [sortOrder, sortBy, gamePerPage])
 
     useEffect(()=>{
         if (fetchedGames.length > 0) setIsFetching(false)
@@ -79,6 +81,12 @@ export default function Browse({preFetchedGames, preFetchedLastPage}) {
         setSortOrder(e.target.value)
         isTriggeredFromSortOptions.current = true
         isUsingPrefetchedGamesDataOnly.current = false
+    }
+
+    function handleGamePerPageChange(e) {
+        setgamePerPage(e.target.value)
+        isTriggeredFromSortOptions.current = true;
+        isUsingPrefetchedGamesDataOnly.current = false;
     }
 
     function handleSearchSubmission() {
@@ -112,6 +120,15 @@ export default function Browse({preFetchedGames, preFetchedLastPage}) {
                             <option value="desc">Descending</option>
                         </select>
                     </label>
+                    <label className="browse-page__control--select">
+                        <a>Amount per page: </a>
+                        <select className="browse-page__control--amt-per-page" value={gamePerPage} onChange={handleGamePerPageChange}>
+                            <option value={8}>8</option>
+                            <option value={16}>16</option>
+                            <option value={32}>32</option>
+                            <option value={64}>64</option>
+                        </select>
+                    </label>
                     <input className="browse-page__control--search" value={searchName} onChange={(e)=>{setSearchName(e.target.value)}} onKeyPress={(e)=>{if (e.key === 'Enter') handleSearchSubmission()}}placeholder="Search by game name here"/>                
                 </div>
                 <div className="browse-page__cards">
@@ -136,7 +153,7 @@ export default function Browse({preFetchedGames, preFetchedLastPage}) {
 
 export async function getStaticProps()  {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${GAME_PER_PAGE}&page=1&sortBy=${DEFAULT_SORT_BY}&sortOrder=${DEFAULT_SORT_ORDER}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${DEFAULT_GAME_PER_PAGE}&page=1&sortBy=${DEFAULT_SORT_BY}&sortOrder=${DEFAULT_SORT_ORDER}`)
     const data = await res.json()
 
     return {
