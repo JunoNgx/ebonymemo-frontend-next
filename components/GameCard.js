@@ -79,7 +79,7 @@ export default function GameCard({game}) {
                 <p className="card__footer__cta"><Link href={`/browse/${game.gameId}`}><a>Read more</a></Link></p>
             </div>
             <div className={tooltipClass}>
-                <p>{tooltipContent}</p>
+                <p className="card__tooltip__content">{tooltipContent}</p>
             </div>
         </div>
     )
