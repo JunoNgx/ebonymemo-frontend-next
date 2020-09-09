@@ -66,7 +66,7 @@ export default function GameCard({game}) {
                     ? <div className="card__cover__featured-badge card--has-tooltip" title={TOOLTIP_FEATURED_BADGE} onClick={(e)=>controlTooltipDisplay(TOOLTIP_FEATURED_BADGE)}></div>
                     : ''
                 }
-                <img className="card__cover__img" src={game.coverUrl}/>
+                <img className="card__cover__img" src={game.coverUrl} alt={`Illustrative screenshot of the game ${game.name}`}/>
             </div>
             <p className="card__title">{game.name}</p>
             <p className="card__subtitle">{game.releaseYear} {game.developer.name}</p>
