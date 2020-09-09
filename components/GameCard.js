@@ -39,7 +39,7 @@ export default function GameCard({game}) {
     if (game.android) {
         android = (game.android === "delisted")
             ? <p className="card__footer__links__link card__footer__links__link--delisted card--has-tooltip" title={TOOLTIP_DELISTED_ANDROID} onClick={(e)=>controlTooltipDisplay(TOOLTIP_DELISTED_ANDROID)}>And</p>
-            : <p className="card__footer__links__link" title="Click to access the Android release of this game on the Google Play Store"><a href={game.android} target="_blank">And</a></p>
+            : <p className="card__footer__links__link" title="Click to access the Android release of this game on the Google Play Store"><a href={game.android} rel="noopener" target="_blank">And</a></p>
     } else {
         android = ''
     }
@@ -47,7 +47,7 @@ export default function GameCard({game}) {
     if (game.ios) {
         ios = (game.ios === "delisted")
             ? <p className="card__footer__links__link card__footer__links__link--delisted card--has-tooltip" title={TOOLTIP_DELISTED_IOS} onClick={(e)=>controlTooltipDisplay(TOOLTIP_DELISTED_IOS)}>iOS</p>
-            : <p className="card__footer__links__link" title="Click to access the iOS release of this game on the Apple App Store"><a href={game.ios} target="_blank">iOS</a></p>
+            : <p className="card__footer__links__link" title="Click to access the iOS release of this game on the Apple App Store"><a href={game.ios} rel="noopener" target="_blank">iOS</a></p>
     } else {
         ios = ''
     }

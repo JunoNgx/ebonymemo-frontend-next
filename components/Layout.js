@@ -18,6 +18,8 @@ export default function Layout ({children}) {
                 <meta name="msapplication-TileColor" content="#00aba9"/>
                 <meta name="theme-color" content="#fff"/>
                 <meta name="description" content="An arthouse videogame curator website for smartphones and mobile devices"/>
+                <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                <link rel="preconnect" href="https://storage.googleapis.com"/>
             </Head>
             <Navbar/>
             {children}

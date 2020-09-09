@@ -1,6 +1,8 @@
 // next.config.js
  
-module.exports = {
+const withOffline = require('next-offline')
+
+const nextConfig = {
     // Target must be serverless
     target: 'serverless',
     env: {
@@ -8,3 +10,5 @@ module.exports = {
         // NEXT_PUBLIC_API_URL: 'http://localhost:3001/.netlify/functions/server'
     }
 };
+
+module.exports = withOffline(nextConfig)

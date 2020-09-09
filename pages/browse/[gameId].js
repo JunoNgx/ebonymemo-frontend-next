@@ -76,7 +76,7 @@ function GamePanel({game}) {
             </>)
             : (<>
                 <p className="game-page__panel__field">Android release</p>
-                <p className="game-page__panel__value"><a href={game.android} target="_blank">Link</a></p>
+                <p className="game-page__panel__value"><a href={game.android} rel="noopener" target="_blank">Link</a></p>
             </>)
     }
 
@@ -90,7 +90,7 @@ function GamePanel({game}) {
             </>)
             : (<>
                 <p className="game-page__panel__field">iOS release</p>
-                <p className="game-page__panel__value"><a href={game.ios} target="_blank">Link</a></p>
+                <p className="game-page__panel__value"><a href={game.ios} rel="noopener" target="_blank">Link</a></p>
             </>)
     }
 
@@ -151,14 +151,14 @@ function DevPanel({dev}) {
     website = (dev.website)
         ? <>
             <p className="game-page__panel__field">Website</p>
-            <p className="game-page__panel__value"><a href={dev.website} target="_blank">{(dev.website.length > 24) ? "Link" : dev.website}</a></p>
+            <p className="game-page__panel__value"><a href={dev.website} rel="noopener" target="_blank">{(dev.website.length > 24) ? "Link" : dev.website}</a></p>
         </>
         : ''
 
     twitter = (dev.twitter)
         ? <>
             <p className="game-page__panel__field">Twitter</p>
-            <p className="game-page__panel__value"><a href={`https://twitter.com/${dev.twitter}`} target="_blank">@{dev.twitter}</a></p>
+            <p className="game-page__panel__value"><a href={`https://twitter.com/${dev.twitter}`} rel="noopener" target="_blank">@{dev.twitter}</a></p>
         </>
         : ''
 

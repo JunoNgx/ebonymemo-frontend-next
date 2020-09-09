@@ -25,7 +25,6 @@
             "purpose": "any maskable"
         }
     ],
-    "start_url": "https://ebonymemo.com",
+    "start_url": "https://ebonymemo.com/browse",
     "prefer_related_applications": false
-
 }

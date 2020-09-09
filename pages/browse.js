@@ -129,7 +129,7 @@ export default function Browse({preFetchedGames, preFetchedLastPage}) {
                             <option value={64}>64</option>
                         </select>
                     </label>
-                    <input className="browse-page__control--search" value={searchName} onChange={(e)=>{setSearchName(e.target.value)}} onKeyPress={(e)=>{if (e.key === 'Enter') handleSearchSubmission()}}placeholder="Search by game name here"/>                
+                    <input className="browse-page__control--search" aria-label="Search by name" value={searchName} onChange={(e)=>{setSearchName(e.target.value)}} onKeyPress={(e)=>{if (e.key === 'Enter') handleSearchSubmission()}}placeholder="Search by game name here"/>                
                 </div>
                 <div className="browse-page__cards">
                     {fetchedGames.map((game) => (
