@@ -151,7 +151,7 @@ function DevPanel({dev}) {
     website = (dev.website)
         ? <>
             <p className="game-page__panel__field">Website</p>
-            <p className="game-page__panel__value"><a href={dev.website} target="_blank">{dev.website}</a></p>
+            <p className="game-page__panel__value"><a href={dev.website} target="_blank">{(dev.website.length > 24) ? "Link" : dev.website}</a></p>
         </>
         : ''
 
