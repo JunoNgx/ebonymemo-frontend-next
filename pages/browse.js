@@ -24,13 +24,14 @@ export default function Browse({preFetchedGames, preFetchedLastPage}) {
     const [sortOrder, setSortOrder] = useState(DEFAULT_SORT_ORDER)
     const [gamePerPage, setgamePerPage] = useState(DEFAULT_GAME_PER_PAGE)
     const [searchName, setSearchName] = useState("")
+    const [tagFilter, setTagFilter] = useState("")
 
     // Shorthand functions
     async function concatenateFetchResults() {
         // console.log('perform fetch')
         setIsFetching(true);
-        const FETCH_URL = `${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}&searchName=${searchName}`
-        console.log(FETCH_URL)
+        const FETCH_URL = `${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}&searchName=${searchName}&searchTag=${tagFilter}`
+        // console.log(FETCH_URL)
         const res = await fetch(FETCH_URL)
         const data = await res.json()
 
@@ -59,8 +60,9 @@ export default function Browse({preFetchedGames, preFetchedLastPage}) {
         if (isTriggeredFromSortOptions.current) {
             isTriggeredFromSortOptions.current = false
             reFetch()
+            console.log('refetching')
         }
-    }, [sortOrder, sortBy, gamePerPage])
+    }, [sortOrder, sortBy, gamePerPage, tagFilter])
 
     useEffect(()=>{
         if (fetchedGames.length > 0) setIsFetching(false)
@@ -85,8 +87,19 @@ export default function Browse({preFetchedGames, preFetchedLastPage}) {
 
     function handleGamePerPageChange(e) {
         setgamePerPage(e.target.value)
-        isTriggeredFromSortOptions.current = true;
-        isUsingPrefetchedGamesDataOnly.current = false;
+        isTriggeredFromSortOptions.current = true
+        isUsingPrefetchedGamesDataOnly.current = false
+    }
+
+    function handleTagFilterChange(tagName) {
+        setTagFilter(tagName)
+        isTriggeredFromSortOptions.current = true
+        isUsingPrefetchedGamesDataOnly.current = false
+    }
+
+    function handleTagFilterRemoval() {
+        setTagFilter('')
+        isTriggeredFromSortOptions.current = true
     }
 
     function handleSearchSubmission() {
@@ -130,11 +143,15 @@ export default function Browse({preFetchedGames, preFetchedLastPage}) {
                         </select>
                     </label>
                     <input className="browse-page__control--search" aria-label="Search by name" value={searchName} onChange={(e)=>{setSearchName(e.target.value)}} onKeyPress={(e)=>{if (e.key === 'Enter') handleSearchSubmission()}}placeholder="Search by game name here"/>                
+                    {(tagFilter) && <div className="browse-page__control--tag">
+                        <p>Currently filtering games with tag: <strong>{tagFilter}</strong></p>
+                        <p className="browse-page__control--tag--button" onClick={handleTagFilterRemoval}>Remove filter</p>
+                    </div>}
                 </div>
                 <div className="browse-page__cards">
                     {fetchedGames.map((game) => (
                         <PageTransition key={game.gameId} timeout={500} classNames="page-transition">
-                            <GameCard key={game.gameId} game={game}/>
+                            <GameCard key={game.gameId} game={game}parentTagFilter={handleTagFilterChange}/>
                         </PageTransition>
                     ))}
                 </div>

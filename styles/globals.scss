@@ -64,6 +64,14 @@ $acc-col: lemonchiffon;
     }
 }
 
+@mixin tag-button {
+    transition: color $trans-time, background-color $trans-time;
+    &:hover {
+        color: $bac-col;
+        background-color: $pri-col;
+    }
+}
+
 html {
     font-size: $font-size-std;
     select, input {
@@ -242,7 +250,7 @@ a {
 }
 
 .card {
-    min-height: 440px;
+    min-height: 524px;
     margin: $margin-desktop;
     padding: $margin-desktop;
     @include std-border;
@@ -284,17 +292,21 @@ a {
         margin: 1rem 0 0 0;
     }
     &__subtitle {
-        margin: 0.5rem 0 1rem 0;
+        margin: 0.5rem 0 0.5rem 0;
     }
     &__tags {
         display: flex;
         flex-wrap: wrap;
+        margin-bottom: 1rem;
         &__tag {
+            cursor: pointer;
             font-size: 0.8rem;
             font-style: italic;
             border: 1px solid $pri-col;
-            margin: 0.2rem;
+            margin: 0 0.4rem 0.4rem 0;
             padding: 0.3rem;
+
+            @include tag-button;
         }
     }
     &__footer {
@@ -448,13 +460,27 @@ a {
         margin: $margin-desktop;
         align-self: stretch;
         align-items: center;
+        flex-wrap: wrap;
         &--select {
-            margin: 0.2rem;
+            margin: 1rem;
+        }
+        &--tag {
+            margin: $margin-desktop;
+            display: flex;
+            align-items: center;
+            flex-shrink: 2;
+            &--button {
+                @include std-border;
+                cursor: pointer;
+                padding: 0.5rem;
+                margin: 1rem;
+                @include tag-button;
+            }
         }
         &--search {
             @include std-border;
             padding: 0.5rem;
-            flex-basis: 40%;
+            flex: 2 4 auto;
         }
     }
     &__cards {
@@ -474,7 +500,7 @@ a {
     @media screen and (max-width: $break-large) {
         &__control {
             &--search {
-                max-width: 25%;
+                order: -1;
             }
         }
         &__cards {
@@ -483,24 +509,28 @@ a {
     }
     @media screen and (max-width: $break-medium) {
         &__control {
-            flex-direction: column;
-            align-items: stretch;
             margin: $margin-mobile;
-            height: 10rem;
-
-            &--search {
-                order: -1;
-                flex-basis: auto;
-                max-width: 100%;
-                margin-right: 0;
-            }
             &--select {
-                margin-left: 1rem;
+                margin: 0.5rem 0 0.5rem 1rem;
+            }
+            &--tag {
+                margin: $margin-mobile;
             }
         }
         &__cards {
             margin: $margin-mobile;
             grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+    // Optimizing for xs screen (sub-iPhone5)
+    @media screen and (max-width: 320px) {
+        &__control {
+            &--search {
+                // TODO Figure out how this works
+                // The way this searchbar works puzzles my mind
+                width: 200px;
+            }
         }
     }
 }

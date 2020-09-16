@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useState, useRef, useEffect } from 'react'
 
-export default function GameCard({game}) {
+export default function GameCard({game, parentTagFilter}) {
 
     const TOOLTIP_DELISTED_ANDROID = "The Android release of this game has unfortunately been delisted."
     const TOOLTIP_DELISTED_IOS = "The iOS release of this game has unfortunately been delisted."
@@ -34,20 +34,14 @@ export default function GameCard({game}) {
         setTooltipContent(content)
     }
 
-    let tags, android, ios, other, tooltipClass
-
-    if (game.tags) {
-        tags = (
-            <div className="card__tags">
-                <p className="card__tags__tag">stylish</p>
-                <p className="card__tags__tag">mechanically deep</p>
-                <p className="card__tags__tag">platformer</p>
-                <p className="card__tags__tag">experimental</p>
-            </div>
-        )
-    } else {
-        tags = ''
+    function handleTagClick(tagName) {
+        // Will only run when specified by parent component
+        if (parentTagFilter) {
+            parentTagFilter(tagName)
+        }
     }
+
+    let android, ios, other, tooltipClass
 
     if (game.android) {
         android = (game.android === "delisted")
@@ -83,7 +77,9 @@ export default function GameCard({game}) {
             </div>
             <p className="card__title">{game.name}</p>
             <p className="card__subtitle">{game.releaseYear} {game.developer.name}</p>
-            {tags}
+            {(game.tags) && <div className="card__tags">
+                {game.tags.map(tag => <p className="card__tags__tag" onClick={() => handleTagClick(tag.name)}>{tag.name}</p>)}
+            </div>}
             <div className="card__footer">
                 <div className="card__footer__links">
                     {android}
