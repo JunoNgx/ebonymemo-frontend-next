@@ -34,7 +34,20 @@ export default function GameCard({game}) {
         setTooltipContent(content)
     }
 
-    let android, ios, other, tooltipClass
+    let tags, android, ios, other, tooltipClass
+
+    if (game.tags) {
+        tags = (
+            <div className="card__tags">
+                <p className="card__tags__tag">stylish</p>
+                <p className="card__tags__tag">mechanically deep</p>
+                <p className="card__tags__tag">platformer</p>
+                <p className="card__tags__tag">experimental</p>
+            </div>
+        )
+    } else {
+        tags = ''
+    }
 
     if (game.android) {
         android = (game.android === "delisted")
@@ -70,6 +83,7 @@ export default function GameCard({game}) {
             </div>
             <p className="card__title">{game.name}</p>
             <p className="card__subtitle">{game.releaseYear} {game.developer.name}</p>
+            {tags}
             <div className="card__footer">
                 <div className="card__footer__links">
                     {android}
