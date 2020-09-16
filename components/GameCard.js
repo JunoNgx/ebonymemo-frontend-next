@@ -78,7 +78,7 @@ export default function GameCard({game, parentTagFilter}) {
             <p className="card__title">{game.name}</p>
             <p className="card__subtitle">{game.releaseYear} {game.developer.name}</p>
             {(game.tags) && <div className="card__tags">
-                {game.tags.map(tag => <p className="card__tags__tag" onClick={() => handleTagClick(tag.name)}>{tag.name}</p>)}
+                {game.tags.map(tag => <p className="card__tags__tag" key={tag.name} onClick={() => handleTagClick(tag.name)}>{tag.name}</p>)}
             </div>}
             <div className="card__footer">
                 <div className="card__footer__links">

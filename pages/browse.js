@@ -30,7 +30,7 @@ export default function Browse({preFetchedGames, preFetchedLastPage}) {
     async function concatenateFetchResults() {
         // console.log('perform fetch')
         setIsFetching(true);
-        const FETCH_URL = `${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}&searchName=${searchName}&searchTag=${tagFilter}`
+        const FETCH_URL = `${process.env.NEXT_PUBLIC_API_URL}/games/?limit=${gamePerPage}&page=${currentPage}&sortBy=${sortBy}&sortOrder=${sortOrder}&searchName=${searchName}&searchTag=${encodeURI(tagFilter)}`
         // console.log(FETCH_URL)
         const res = await fetch(FETCH_URL)
         const data = await res.json()
@@ -60,7 +60,7 @@ export default function Browse({preFetchedGames, preFetchedLastPage}) {
         if (isTriggeredFromSortOptions.current) {
             isTriggeredFromSortOptions.current = false
             reFetch()
-            console.log('refetching')
+            // console.log('refetching')
         }
     }, [sortOrder, sortBy, gamePerPage, tagFilter])
 

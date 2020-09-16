@@ -262,7 +262,7 @@ a {
 
     transition: $trans-time;
     &:hover {
-        padding: $margin-desktop - 5px;
+        padding: $margin-desktop - 4px;
         border-width: 7px;
         box-shadow: 1rem 1rem;
         transform: translate(0, -1rem);
