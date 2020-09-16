@@ -250,7 +250,7 @@ a {
 }
 
 .card {
-    min-height: 524px;
+    min-height: 512px;
     margin: $margin-desktop;
     padding: $margin-desktop;
     @include std-border;
@@ -297,7 +297,7 @@ a {
     &__tags {
         display: flex;
         flex-wrap: wrap;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         &__tag {
             cursor: pointer;
             font-size: 0.8rem;
@@ -365,11 +365,12 @@ a {
     }
     @media screen and (max-width: $break-medium) {
         // No fanciful hover transitions on mobile
-        margin: 1.5rem 0;
+        margin: 0 0 2rem 0;
         padding: 1rem;
         box-shadow: none;
         transition: none;
         &:hover {
+            padding: 1rem;
             border-width: $std-bor-wid;
             box-shadow: none;
             transform: none;
@@ -378,11 +379,14 @@ a {
 
     // Optimizing for xs screen (sub-iPhone5)
     @media screen and (max-width: 320px) {
-        padding: 0.4rem;
+        padding: 0.5rem; 
+        &:hover {
+            padding: 0.5rem;
+        }
         &__footer {
             &__cta {
                 a {
-                    padding: 0.2rem 0.35rem;
+                    padding: 0.5rem 0.35rem;
                 }
             }
         }
@@ -472,7 +476,8 @@ a {
             &--button {
                 @include std-border;
                 cursor: pointer;
-                padding: 0.5rem;
+                text-align: center;
+                padding: 0.25rem 0.5rem;
                 margin: 1rem;
                 @include tag-button;
             }
@@ -510,11 +515,14 @@ a {
     @media screen and (max-width: $break-medium) {
         &__control {
             margin: $margin-mobile;
+            &--search {
+                margin: 0 0 0.5rem 0;
+            }
             &--select {
                 margin: 0.5rem 0 0.5rem 1rem;
             }
             &--tag {
-                margin: $margin-mobile;
+                margin: 0 $margin-mobile;
             }
         }
         &__cards {
@@ -523,7 +531,7 @@ a {
         }
     }
 
-    // Optimizing for xs screen (sub-iPhone5)
+    // Optimizing for XS screen (sub-iPhone5)
     @media screen and (max-width: 320px) {
         &__control {
             &--search {
