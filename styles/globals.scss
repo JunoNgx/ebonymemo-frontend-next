@@ -370,6 +370,7 @@ a {
         box-shadow: none;
         transition: none;
         &:hover {
+            padding: 1rem;
             border-width: $std-bor-wid;
             box-shadow: none;
             transform: none;
@@ -378,11 +379,14 @@ a {
 
     // Optimizing for xs screen (sub-iPhone5)
     @media screen and (max-width: 320px) {
-        padding: 0.4rem;
+        padding: 0.5rem; 
+        &:hover {
+            padding: 0.5rem;
+        }
         &__footer {
             &__cta {
                 a {
-                    padding: 0.2rem 0.35rem;
+                    padding: 0.5rem 0.35rem;
                 }
             }
         }
@@ -473,7 +477,7 @@ a {
                 @include std-border;
                 cursor: pointer;
                 text-align: center;
-                padding: 0.5rem;
+                padding: 0.25rem 0.5rem;
                 margin: 1rem;
                 @include tag-button;
             }
@@ -511,6 +515,9 @@ a {
     @media screen and (max-width: $break-medium) {
         &__control {
             margin: $margin-mobile;
+            &--search {
+                margin: 0 0 0.5rem 0;
+            }
             &--select {
                 margin: 0.5rem 0 0.5rem 1rem;
             }
@@ -524,7 +531,7 @@ a {
         }
     }
 
-    // Optimizing for xs screen (sub-iPhone5)
+    // Optimizing for XS screen (sub-iPhone5)
     @media screen and (max-width: 320px) {
         &__control {
             &--search {
