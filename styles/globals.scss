@@ -250,7 +250,7 @@ a {
 }
 
 .card {
-    min-height: 524px;
+    min-height: 512px;
     margin: $margin-desktop;
     padding: $margin-desktop;
     @include std-border;
@@ -297,7 +297,7 @@ a {
     &__tags {
         display: flex;
         flex-wrap: wrap;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         &__tag {
             cursor: pointer;
             font-size: 0.8rem;
@@ -472,6 +472,7 @@ a {
             &--button {
                 @include std-border;
                 cursor: pointer;
+                text-align: center;
                 padding: 0.5rem;
                 margin: 1rem;
                 @include tag-button;
