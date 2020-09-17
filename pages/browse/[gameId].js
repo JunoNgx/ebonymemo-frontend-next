@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown"
 import PageTransition from "next-page-transitions/lib/PageTransition"
 
 import Layout from "../../components/Layout"
+import { STRINGS } from "../../components/Strings"
 
 export default function GamePage({game}){
 
@@ -72,7 +73,7 @@ function GamePanel({game}) {
         android = (game.android === "delisted")
             ? (<>
                 <p className="game-page__panel__field">Android release</p>
-                <p className="game-page__panel__value"><em>The Android release of this game has been delisted and is not available at the moment (read the FAQ for more information about this phenomenon)</em></p>
+                <p className="game-page__panel__value"><em>{STRINGS.DELISTED_ANDROID}</em></p>
             </>)
             : (<>
                 <p className="game-page__panel__field">Android release</p>
@@ -86,7 +87,7 @@ function GamePanel({game}) {
         ios = (game.ios === "delisted")
             ? (<>
                 <p className="game-page__panel__field">iOS release</p>
-                <p className="game-page__panel__value"><em>The iOS release of this game has been delisted and not available at the moment (read the FAQ for more information about this phenomenon)</em></p>
+            <p className="game-page__panel__value"><em>{STRINGS.DELISTED_IOS}</em></p>
             </>)
             : (<>
                 <p className="game-page__panel__field">iOS release</p>
@@ -97,13 +98,14 @@ function GamePanel({game}) {
     featured = (game.featured)
         ? (<>
             <p className="game-page__panel__field">Editor's Choice</p>
-            <p className="game-page__panel__value">This game is currently featured as an Editor's Choice</p>
+            <p className="game-page__panel__value">{STRINGS.FEATURED_BADGE}</p>
         </>)
         : ''
+        
     other = (game.other)
         ? (<>
             <p className="game-page__panel__field">Alternative release</p>
-            <p className="game-page__panel__value">This game has at least one release outside of Apple App Store and Google Play Store. Please read more from the game's description for more information.</p>
+            <p className="game-page__panel__value">{STRINGS.OTHER}</p>
         </>)
         : ''
 

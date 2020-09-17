@@ -1,12 +1,9 @@
 import Link from 'next/link'
 import { useState, useRef, useEffect } from 'react'
 
-export default function GameCard({game, parentTagFilter}) {
+import { STRINGS } from './Strings'
 
-    const TOOLTIP_DELISTED_ANDROID = "The Android release of this game has unfortunately been delisted."
-    const TOOLTIP_DELISTED_IOS = "The iOS release of this game has unfortunately been delisted."
-    const TOOLTIP_DELISTED_OTHER = "This game has at least one release outside of Apple App Store and Google Play Store. Please read more from the game's description for more information."
-    const TOOLTIP_FEATURED_BADGE = "This game is currently featured as an Editor's Choice."
+export default function GameCard({game, parentTagFilter}) {
 
     const [tooltipContent, setTooltipContent] = useState('')
     const [isTooltipShown, setIsTooltipShown] = useState(false)
@@ -45,22 +42,22 @@ export default function GameCard({game, parentTagFilter}) {
 
     if (game.android) {
         android = (game.android === "delisted")
-            ? <p className="card__footer__links__link card__footer__links__link--delisted card--has-tooltip" title={TOOLTIP_DELISTED_ANDROID} onClick={(e)=>controlTooltipDisplay(TOOLTIP_DELISTED_ANDROID)}>And</p>
-            : <p className="card__footer__links__link" title="Click to access the Android release of this game on the Google Play Store"><a href={game.android} rel="noopener" target="_blank">And</a></p>
+            ? <p className="card__footer__links__link card__footer__links__link--delisted card--has-tooltip" title={STRINGS.DELISTED_ANDROID} onClick={(e)=>controlTooltipDisplay(STRINGS.DELISTED_ANDROID)}>And</p>
+            : <p className="card__footer__links__link" title={STRINGS.ALT_ANDROID}><a href={game.android} rel="noopener" target="_blank">And</a></p>
     } else {
         android = ''
     }
 
     if (game.ios) {
         ios = (game.ios === "delisted")
-            ? <p className="card__footer__links__link card__footer__links__link--delisted card--has-tooltip" title={TOOLTIP_DELISTED_IOS} onClick={(e)=>controlTooltipDisplay(TOOLTIP_DELISTED_IOS)}>iOS</p>
-            : <p className="card__footer__links__link" title="Click to access the iOS release of this game on the Apple App Store"><a href={game.ios} rel="noopener" target="_blank">iOS</a></p>
+            ? <p className="card__footer__links__link card__footer__links__link--delisted card--has-tooltip" title={STRINGS.DELISTED_IOS} onClick={(e)=>controlTooltipDisplay(STRINGS.DELISTED_IOS)}>iOS</p>
+            : <p className="card__footer__links__link" title={STRINGS.ALT_IOS}><a href={game.ios} rel="noopener" target="_blank">iOS</a></p>
     } else {
         ios = ''
     }
 
     other = (game.other)
-        ? <p className="card__footer__links__link card--has-tooltip" title={TOOLTIP_DELISTED_OTHER} onClick={(e)=>controlTooltipDisplay(TOOLTIP_DELISTED_OTHER)}>alt</p>
+        ? <p className="card__footer__links__link card--has-tooltip" title={STRINGS.OTHER} onClick={(e)=>controlTooltipDisplay(STRINGS.OTHER)}>alt</p>
         : ''
 
     tooltipClass = "card__tooltip"
@@ -70,7 +67,7 @@ export default function GameCard({game, parentTagFilter}) {
         <div className="card" ref={cardRef}>
             <div className="card__cover">
                 {(game.featured)
-                    ? <div className="card__cover__featured-badge card--has-tooltip" title={TOOLTIP_FEATURED_BADGE} onClick={(e)=>controlTooltipDisplay(TOOLTIP_FEATURED_BADGE)}></div>
+                    ? <div className="card__cover__featured-badge card--has-tooltip" title={STRINGS.FEATURED_BADGE} onClick={(e)=>controlTooltipDisplay(STRINGS.FEATURED_BADGE)}></div>
                     : ''
                 }
                 <img className="card__cover__img" src={game.coverUrl} alt={`Illustrative screenshot of the game ${game.name}`}/>
