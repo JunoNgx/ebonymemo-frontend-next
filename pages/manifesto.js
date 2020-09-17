@@ -17,7 +17,7 @@ const CONTENT =
 
 ### The boundaries of art.
 
-At no point of time has art not been a topic of historical debate. From [rock scratches](http://www.visual-arts-cork.com/earliest-art.htm) to [children's toys](https://www.theguardian.com/artanddesign/jonathanjonesblog/2014/sep/23/is-lego-art-creative-play-sculpture-nathan-sawaya), many media have been subjected to such arguments. The answer to the question "What can be art?" has always been anywhere between "anything" to ever-growing long list of items. Even video games themselves, in their undeniably highest forms, [have had their capability of being art questioned](https://www.rogerebert.com/roger-ebert/video-games-can-never-be-art).
+At no point of time has art not been a topic of historical debate. From [rock scratches](http://www.visual-arts-cork.com/earliest-art.htm) to [children's toys](https://www.theguardian.com/artanddesign/jonathanjonesblog/2014/sep/23/is-lego-art-creative-play-sculpture-nathan-sawaya), many media have been subjected to such arguments. The answer to the question "What can be art?" has always been anywhere between "anything" to an ever-growing long list of items. Even video games themselves, in their undeniably highest forms, [have had their capability of being art questioned](https://www.rogerebert.com/roger-ebert/video-games-can-never-be-art).
 
 This is the case of mobile videogames' potential as art.
 
@@ -29,15 +29,15 @@ This is the showcase of the best of what mobile videogames have to offer.
 
 ### Gatekeeping and supremacism.
 
-Toxicity is well-heard of in the age of internet, but is hardly a newfangled product of culture. Humanity has subjected itself, in the vast majority of history, to bigotry, discrimination, inequality and hate. While that escalates quickly, and the current subject matter is relatively trivial and insignificant, they are not unrelated. This is the very root of the arguments of "true arts" and "true games" mentioned above. Like how many talented and intellectual people never had recognition they deserved, it pains to see many admirable works of art unheard of and untouched by the vast majority of the population.
+Toxicity is well-heard of in the age of internet, but is hardly a newfangled product of culture. Humanity has subjected itself, in the vast majority of history, to bigotry, discrimination, inequality and hate. While that escalates quickly, and the current subject matter is relatively trivial and insignificant, they are not unrelated. This is the very root of the arguments of "true arts" and "true games". Many talents and great works have been forgotten and lost to time due to elitism and gatekeeping, never receiving the recognition and fame they deserved.
 
-This is for open-mindedness and setting aside prejudice and stereotypes.
+This is for open-mindedness and setting aside prejudice and stereotypes, for a better preservation.
 
 ### Discoverability.
 
-Even though the internet and Google magic have answered the most part of the good old business question "How do I find what I want and need?", some corners remain in the dark. Maybe the interest in "artistic smartphone videogames" is too niche? Maybe there are too more noble and higher hobbies? Perhaps the internet is already overloaded with content from all kinds of platforms? Possibly, the front of page of Google Play Store is good enough of a curation and Fortnite is actually great?
+Even though the internet and Google magic have answered the most part of the good old business question "How do I find what I want and need?", many remains unfulfilled. Undoubtedly, many folks find "artistic smartphone videogames" is a much pretentious and unnecessary pursuit, and such opinions are well-respected. But for people with such a curiosity like I am, there is not enough out there. Yet.
 
-Hopefully, this will be another one of your sources for thoughtful, artisitc and high-quality entertainment for the marvelous computer in your hand.
+Hopefully, this will be another one of your sources for thoughtful, artisitc, and high-quality entertainment for the marvelous computer in your palm.
 
 ## How
 
@@ -55,7 +55,7 @@ I hope you find something interesting here.
 
 If you think someone could benefit from this website, please share it with them.
 
-If you think there is something I should try and add to the collection, please mention [@EbonyMemoM](https://twitter.com/EbonyMemoM) and/or hashtag [#EbonyMemoTry](https://twitter.com/search?q=%23EbonyMemoTry) on Twitter. Please point out my embarrassing grammatical mistakes and spelling errors, too.
+If you think there is something I should try and add to the collection, please mention [@EbonyMemoM](https://twitter.com/EbonyMemoM) and/or hashtag [#EbonyMemoTry](https://twitter.com/search?q=%23EbonyMemoTry) on Twitter. Feel free to point out my embarrassing grammatical mistakes and spelling errors, too.
 
 But most of all, I hope you can be a more open-minded person after leaving this website. That there is beauty and art in the media you do not expect. Or at least, be a bit less judgmental when your nephew says he wants to "play some mobile games" in the evening (hopefully he picked up something from here).
 

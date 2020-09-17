@@ -19,25 +19,15 @@ For information on delisted releases, see the question below.
 
 **Why are some games delisted from the App Store/Play Store?**
 
-It is not easy to generalise a common phenomenon. I found [this thread on reddit](https://www.reddit.com/r/AndroidGaming/comments/cn4oa5/list_of_games_removed_from_playstore/) that looks quite terrifying, and the worse part is I know for sure that this list is incomplete. As far as I have observed, this happens more often on Android than iOS. As someone who has several apps on the Play Store, I am aware that Google makes quite frequent changes in their app requirements and delist a large amount of apps with each change (with notice), until intervened by the developer.
+It is not easy to generalise a common phenomenon. While making this website, I found [this thread on reddit](https://www.reddit.com/r/AndroidGaming/comments/cn4oa5/list_of_games_removed_from_playstore/) that looked quite terrifying, and the worse part is, I knew for sure, the list was incomplete. As far as I have observed, this happens more often on Android than iOS. As someone who has several apps on the Play Store, I am aware that Google makes quite frequent changes in their app requirements and delist a large amount of apps with each change (with notice), until intervened by the developer.
 
-This, coupled with the frequent reports that Android sales are abysmal, leads me to believe that this is a calculated negligence. My educated guess that most developers find the cost of Android app maintenance not justifying the potential sale they can get, effectively "unreleasing" their game on Android.
+This, coupled with the frequent reports that Android sales are abysmal, leads me to believe that this is a calculated negligence. My educated guess that most developers find the cost of Android app maintenance not justifying the potential sale they can get, effectively "unpublish" their games on Android.
 
 (As a side note, I am first-hand guilty of this. I cancelled my Apple developer membership out of poor value I got from it (it wasn't cheap, either), and that's how my game was delisted from the iOS App Store.)
 
-This sadly becomes another problem in the field of history preservation. Mobile applications are extremely centralised, with pretty much one single app store for everything on each platform. While Android allows app sideloading and there are other options for Android apps, the amount is minusculy negligible. Generally, when a game is delisted, it disappears forever, without any way of legitimately accessing it again. The console side of the gaming industry also has been facing a similar problem, with **Hideo Kojima's PT** being one of the more high-profile cases.
+This sadly becomes another problem in the field of history preservation. Mobile applications are extremely centralised, with pretty much one single app store for everything on each platform. While Android allows app sideloading and there are other options for Android apps, the amount is minusculy negligible. It is worse on iOS, with absolutely no such option. Generally, when a game is delisted, it disappears forever, without any way of legitimately accessing it again. The console side of the gaming industry also has been facing a similar problem, with **Hideo Kojima's PT** being one of the more high-profile cases.
 
 If a game has been delisted on your platform, please reach out to the developer and express your interest. And if that fails, let's just put it out that **piracy** is a potential solution that **I do not advocate** for.
-
-----
-
-**Why is there no genre listed?**
-
-Besides the obvious answer is that, it takes a lot of work to design and implement, it is my deliberate choice.
-
-On top of that the fact I that personally dislike genre categorisation, the experimental nature of the games in this collection makes it very hard to do so, even if I want to. Also, as my effort to make my audiences more open-minded, all genre expectations are removed and I encourage you to try as much as you can.
-
-I am, however, open to the idea of genre categorisation if there is significant demand and a good design for it.
 
 ----
 
@@ -59,7 +49,7 @@ It does not matter whether you are a developer, if you think a particular game c
 
 It runs on a smartphone, and I like it.
 
-It is something I have been considering for a long time, and I decide not specify any. If I think it belongs here, I'll put it here.
+The inclusion criteria is something I have been considering for a long time, and I have decided not to specify any. If I think it belongs here, I'll put it here.
 
 ----
 
@@ -71,7 +61,7 @@ This website doesn't make any money (at the moment). I made it for my web develo
 
 **I am a developer whose game is listed and I am not comfortable with the way me/my game is being presented here. What should I do?**
 
-Please send me a private message or an email.
+Please send me a private message or an email and let me know what I should do about it.
 
 ----
 
@@ -80,6 +70,8 @@ Please send me a private message or an email.
 If you are on Steam, then curators are your best bet.
 
 If you are into weird indie games, then this website is partially inspired by [Warp Door](http://warpdoor.com/) and [forest ambassador](https://forestambassador.com/) (which is sadly no longer active, but you should be able to find interesting things there still).
+
+While making this website, I discovered [@vladimir.knight](https://www.instagram.com/vladimir.knight), who had a very similar pursuit to mine, with an Instagram account. It is fantastically curated.
 
 If you have a niche interest, then that's our of my expertise. Discoverability is a big issue these days, and even this site is just attempt to deal with it.
 
@@ -95,13 +87,13 @@ I would appreciate if I can be notified via tweet/private message/email regardin
 
 This website is hosted by [Netlify](https://www.netlify.com/) and it collects whatever Netlify collects, even if it's behind my back.
 
-I don't collect a damn. I am neither a data freak nor am I have time to comptemplate what to do with them. Hell, I even did not use cookies so I wouldn't have to explain these political bollocks. Feel free to go through my source code if you feel concerned.
+I don't collect a damn. I am neither a data freak nor am I have time to comptemplate what to do with them.
 
 ----
 
 **How was this website made?**
 
-The front-end you are seeing is built with [Vercel's NextJS](https://nextjs.org/). I use a custom content management system with a back-end powered by NodeJS/Express and another web interface built with ReactJS for content editing.
+The front-end you are seeing is built with [Vercel's NextJS](https://nextjs.org/). I use a custom content management system with a back-end powered by NodeJS/Express and another web interface built with ReactJS for content editing. The source codes for this system are open and available on my GitHub account.
 `
 
 export default function Faq() { 
