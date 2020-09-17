@@ -64,7 +64,7 @@ export async function getStaticProps({params}) {
 }
 
 function GamePanel({game}) {
-    let android, ios, featured, other
+    let android, ios
 
     // Formatting optional information that might not be available
     if (!game.android) {
@@ -95,20 +95,6 @@ function GamePanel({game}) {
             </>)
     }
 
-    featured = (game.featured)
-        ? (<>
-            <p className="game-page__panel__field">Editor's Choice</p>
-            <p className="game-page__panel__value">{STRINGS.FEATURED_BADGE}</p>
-        </>)
-        : ''
-        
-    other = (game.other)
-        ? (<>
-            <p className="game-page__panel__field">Alternative release</p>
-            <p className="game-page__panel__value">{STRINGS.OTHER}</p>
-        </>)
-        : ''
-
     return (
         <div className="game-page__panel game-page__panel--game">
             <p className="game-page__panel__title">Game information</p>
@@ -118,8 +104,14 @@ function GamePanel({game}) {
             <p className="game-page__panel__value">{game.releaseYear}</p>
             {ios}
             {android}
-            {featured}
-            {other}
+            {(game.featured) && <>
+                <p className="game-page__panel__field">Editor's Choice</p>
+                <p className="game-page__panel__value">{STRINGS.FEATURED_BADGE}</p>
+            </>}
+            {(game.other) && <>
+                <p className="game-page__panel__field">Alternative release</p>
+                <p className="game-page__panel__value">{STRINGS.OTHER}</p>
+            </>}
         </div>
     )
 }
@@ -137,7 +129,7 @@ function GameDesc({game}) {
 
 function DevPanel({dev}) {
     
-    let personnel, website, twitter
+    let personnel
 
     if (dev.personnel.length > 0) {
         personnel = (<>
@@ -150,20 +142,6 @@ function DevPanel({dev}) {
         personnel = ''
     }
 
-    website = (dev.website)
-        ? <>
-            <p className="game-page__panel__field">Website</p>
-            <p className="game-page__panel__value"><a href={dev.website} rel="noopener" target="_blank">{(dev.website.length > 24) ? "Link" : dev.website}</a></p>
-        </>
-        : ''
-
-    twitter = (dev.twitter)
-        ? <>
-            <p className="game-page__panel__field">Twitter</p>
-            <p className="game-page__panel__value"><a href={`https://twitter.com/${dev.twitter}`} rel="noopener" target="_blank">@{dev.twitter}</a></p>
-        </>
-        : ''
-
     return (
         <div className="game-page__panel game-page__panel--dev">
             <p className="game-page__panel__title">Developer information</p>
@@ -172,8 +150,14 @@ function DevPanel({dev}) {
             <p className="game-page__panel__field">Origin</p>
             <p className="game-page__panel__value">{dev.origin}</p>
             {personnel}
-            {website}
-            {twitter}
+            {(dev.website) && <>
+                <p className="game-page__panel__field">Website</p>
+                <p className="game-page__panel__value"><a href={dev.website} rel="noopener" target="_blank">{(dev.website.length > 24) ? "Link" : dev.website}</a></p>
+            </>}
+            {(dev.twitter) && <>
+                <p className="game-page__panel__field">Twitter</p>
+                <p className="game-page__panel__value"><a href={`https://twitter.com/${dev.twitter}`} rel="noopener" target="_blank">@{dev.twitter}</a></p>
+            </>}
         </div>
     )
 }
