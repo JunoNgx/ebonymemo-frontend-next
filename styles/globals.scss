@@ -192,7 +192,6 @@ a {
             display: block;
         }
         &__links {
-            // border: 1px solid #fff;
             flex-direction: column;
             justify-content: space-between;
             align-self: baseline;
@@ -200,25 +199,10 @@ a {
             margin: 0;
             padding: 0;
             display: block;
-            // flex-grow: 1;
-            
-            // display: none;
-            // transform: scale(0.5, 0.5);
-            // max-height: 1px;
-            // overflow: hidden;
-            // transition: max-height $trans-time, transform $trans-time;
 
-            // &--expanded {
-            //     // display: block;
-            //     // max-height: 500px;
-            //     // transform: scale(1, 1)
-            // }
             &__link {
-                // border: 1px solid #fff;
-                // margin: 0;
                 text-align: center;
-                padding: 0.5rem;
-                border: 1px solid $bac-col;
+                margin: 2rem;
 
                 // removing transitions inherited from desktop layout
                 transition: none;
@@ -226,10 +210,15 @@ a {
                     background-color: $pri-col;
                 }
                 a {
+                    display: block;
                     transition: none;
+                    padding: 0.5rem 0rem;
+                    width: 100%;
+                    border: 1px solid $bac-col;
                     &:hover {
                         padding: 0;
                         color: $bac-col;
+                        padding: 0.5rem 0rem;
                     }
                 }
             }
