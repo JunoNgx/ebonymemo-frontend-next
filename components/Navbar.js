@@ -9,14 +9,17 @@ export default function Navbar() {
         setStateIsExpanded(isExpanded => !isExpanded)
     }
 
-    let mBtnClassName = "navbar__mbtn", linksClassName = "navbar__links"
+    let navbarClassName = "navbar"
+    let mBtnClassName = "navbar__mbtn"
+    let linksClassName = "navbar__links"
     if (stateIsExpanded) {
+        navbarClassName += " navbar--expanded"
         mBtnClassName += " navbar__mbtn--expanded"
         linksClassName += " navbar__links--expanded"
     }
 
     return (
-        <div className="navbar">
+        <div className={navbarClassName}>
             <p className="navbar__brand"><Link href={"/browse"}><a>{"{Ebony Memo}"}</a></Link></p>
             {/* Expand button is only displayed in mobile layout, set by CSS */}
             <p className={mBtnClassName} onClick={toggleExpand}/>
