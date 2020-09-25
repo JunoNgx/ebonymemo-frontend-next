@@ -6,6 +6,7 @@
 $fonts: Roboto Slab, New Times Roman, sans-serif;
 
 $break-medium: 512px;
+$break-medium-large: 768px;
 $break-large: 1024px;
 $break-xlarge: 2048px;
 
@@ -162,12 +163,12 @@ a {
         }
     }
 
-    @media screen and (max-width: $break-medium) {
+    @media screen and (max-width: $break-medium-large) {
         flex-wrap: wrap;
         justify-content: space-between;
         margin: $margin-mobile;
         padding: 1rem 0.5rem;
-        max-height: 45px;
+        max-height: 40px;
         transition: max-height $trans-time ease-out;
         &--expanded {
             max-height: 500px;
@@ -210,16 +211,31 @@ a {
                     background-color: $pri-col;
                 }
                 a {
+                    margin: auto;
                     display: block;
                     transition: none;
                     padding: 0.5rem 0rem;
-                    width: 100%;
+                    width: 50%;
                     border: 1px solid $bac-col;
                     &:hover {
                         padding: 0;
                         color: $bac-col;
                         padding: 0.5rem 0rem;
                     }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: $break-medium) {
+        max-height: 45px;
+        &--expanded {
+            max-height: 500px;
+        }
+        &__links {
+            &__link {
+                a {
+                    width: 100%;
                 }
             }
         }

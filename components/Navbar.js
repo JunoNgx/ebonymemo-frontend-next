@@ -25,6 +25,7 @@ export default function Navbar() {
             <p className={mBtnClassName} onClick={toggleExpand}/>
             <ul className={linksClassName}>
                 <li className="navbar__links__link"><Link href="/"><a>Front page</a></Link></li>
+                <li className="navbar__links__link"><Link href="/browse"><a>Browse</a></Link></li>
                 <li className="navbar__links__link"><Link href="/manifesto"><a>Manifesto</a></Link></li>
                 <li className="navbar__links__link"><Link href="/faq"><a>FAQ</a></Link></li>
             </ul>
