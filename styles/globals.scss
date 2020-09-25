@@ -401,44 +401,68 @@ a {
 }
 
 .landing-page {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: $margin-desktop;
-    &__intro {
-        @include std-border;
-        flex-basis: 300px;
-        flex-grow: 2;
-        font-size: 1.5rem;
-        padding: $margin-desktop;
-        margin: 3rem;
-        &__cta-block {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            &__cta {
-                margin-left: 1rem;
-                @include accented-button;
+    &__upper {
+        &__hero-banner {
+            display: block;
+            width: 40%;
+            margin: auto;
+        }
+    }
+    &__lower {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin: $margin-desktop;
+        &__intro {
+            @include std-border;
+            flex-basis: 300px;
+            flex-grow: 2;
+            font-size: 1.5rem;
+            padding: $margin-desktop;
+            margin: 3rem;
+            &__cta-block {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                &__cta {
+                    margin-left: 1rem;
+                    @include accented-button;
+                }
+            }
+        }
+        &__feature {
+            flex-basis: 300px;
+            margin: auto;
+            &__title {
+                margin: $margin-desktop;
             }
         }
     }
-    &__feature {
-        flex-basis: 300px;
-        margin: auto;
-        &__title {
-            margin: $margin-desktop;
+    @media screen and (max-width: $break-large) {
+        margin: $margin-mobile;
+        &__upper {
+            &__hero-banner {
+                width: 70%;
+            }
         }
     }
     @media screen and (max-width: $break-medium) {
-        margin: $margin-mobile;
-        &__intro {
-            font-size: 1rem;
-            margin: 0;
+        &__upper {
+            margin: $margin-mobile;
+            &__hero-banner {
+                width: 100%;
+            }
         }
-        &__feature {
-            flex-basis: 100%;
-            &__title {
-                text-align: center;
+        &__lower {
+            &__intro {
+                font-size: 1rem;
+                margin: 0;
+            }
+            &__feature {
+                flex-basis: 100%;
+                &__title {
+                    text-align: center;
+                }
             }
         }
     }
