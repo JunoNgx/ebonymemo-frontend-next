@@ -421,25 +421,33 @@ a {
     align-items: flex-start;
     flex-wrap: wrap;
     margin: $margin-desktop;
+
     &__intro {
-        @include std-border;
         flex-basis: 300px;
         flex-grow: 2;
         font-size: 1.5rem;
-        padding: $margin-desktop;
         margin: 3rem;
+
         &__hero-banner {
             display: block;
             width: 70%;
-            margin: auto;
+            margin: 0 auto 1.5rem auto;
         }
-        &__cta-block {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            &__cta {
-                margin-left: 1rem;
-                @include accented-button;
+        &__content {
+            @include std-border;
+            padding: $margin-desktop;
+            // &__header {
+            //     margin: 0;
+            // }
+            &__cta-block {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                margin: 0;
+                &__cta {
+                    margin-left: 1rem;
+                    @include accented-button;
+                }
             }
         }
     }
