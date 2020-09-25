@@ -26,31 +26,27 @@ export default function Home ({featuredGames}) {
                 {/* Workaround to probably a bug in next-page-transitions*/}
                 <div key="transit-area">
                     <div className="landing-page">
-                        <div className ="landing-page__upper">
-                            <img className="landing-page__upper__hero-banner" src="/HeroBannerDraft.png"/>
-                        </div>
-                        <div className ="landing-page__lower">
-                            <div className="landing-page__lower__intro">
-                                <h1>Videogames are art.</h1>
-                                <p>On computers, XBox, PlayStation, Famicom, GameCube, Wii, DS, Switch, and <strong>smartphones</strong>.</p>
-                                <p>Welcome to <strong>{"{Ebony Memo}"}</strong>, an arthouse videogame curator website exclusively for mobile devices. </p>
-                                <div className="landing-page__lower__intro__cta-block">
-                                    <p className="landing-page__lower__intro__cta-block__cta"><Link href="/manifesto"><a>Read the manifesto</a></Link></p>
-                                    <p className="landing-page__lower__intro__cta-block__cta"><Link href="/browse"><a>Browse the collection</a></Link></p>
-                                </div>
+                        <div className="landing-page__intro">
+                        <img className="landing-page__intro__hero-banner" src="/HeroBannerDraft.png"/>
+                            <h1>Videogames are art.</h1>
+                            <p>On computers, XBox, PlayStation, Famicom, GameCube, Wii, DS, Switch, and <strong>smartphones</strong>.</p>
+                            <p>Welcome to <strong>{"{Ebony Memo}"}</strong>, an arthouse videogame curator website exclusively for mobile devices. </p>
+                            <div className="landing-page__intro__cta-block">
+                                <p className="landing-page__intro__cta-block__cta"><Link href="/manifesto"><a>Read the manifesto</a></Link></p>
+                                <p className="landing-page__intro__cta-block__cta"><Link href="/browse"><a>Browse the collection</a></Link></p>
                             </div>
-                            {(randomIndex !== undefined)
-                                ? (
-                                    <div className="landing-page__lower__feature">
-                                        <div className="landing-page__lower__feature__title">
-                                            <h2>Random feature:</h2>
-                                        </div>
-                                        <GameCard game={featuredGames[randomIndex]}/>
-                                    </div>
-                                    )
-                                : ''
-                            }
                         </div>
+                        {(randomIndex !== undefined)
+                            ? (
+                                <div className="landing-page__feature">
+                                    <div className="landing-page__feature__title">
+                                        <h2>Random feature:</h2>
+                                    </div>
+                                    <GameCard game={featuredGames[randomIndex]}/>
+                                </div>
+                                )
+                            : ''
+                        }
                     </div>
                 </div>
             </PageTransition>
