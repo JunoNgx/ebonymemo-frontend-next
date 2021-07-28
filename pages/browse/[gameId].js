@@ -121,7 +121,7 @@ function GameDesc({game}) {
     return (
         <div className="game-page__panel game-page__panel--desc">
             <img src={game.coverUrl}/>
-            <div><ReactMarkdown source={game.description}/></div>
+            <div><ReactMarkdown children={game.description}/></div>
             <p className="game-page__panel__button"><a onClick={()=>router.back()}>Back</a></p>
         </div>
     )

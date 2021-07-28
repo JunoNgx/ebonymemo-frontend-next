@@ -108,7 +108,7 @@ export default function Faq() {
                 <>
                     <div className="text-page">
                         <div className="text-page__content">
-                            <ReactMarkdown source={CONTENT}/>
+                            <ReactMarkdown children={CONTENT}/>
                         </div>
                     </div>
                 </>
