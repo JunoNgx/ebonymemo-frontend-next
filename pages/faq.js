@@ -94,6 +94,12 @@ I don't collect a damn. I am neither a data freak nor am I have time to comptemp
 **How was this website made?**
 
 The front-end you are seeing is built with [Vercel's NextJS](https://nextjs.org/). I use a custom content management system with a back-end powered by NodeJS/Express and another web interface built with ReactJS for content editing. The source codes for this system are open and available on my GitHub account.
+
+----
+
+**Who created the artwork for this website?**
+
+The front page artwork animation was created by [Linh Ha](https://fuulin.github.io/), a creative designer, and also a contributor to this site.
 `
 
 export default function Faq() { 
