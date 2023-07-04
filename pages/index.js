@@ -27,7 +27,7 @@ export default function Home ({featuredGames}) {
                 <div key="transit-area">
                     <div className="landing-page">
                         <div className="landing-page__intro">
-                            <img className="landing-page__intro__hero-banner" src="/HeroBannerDraft.png"/>
+                            <img className="landing-page__intro__hero-banner" src="/phonebox.gif"/>
                             <div className="landing-page__intro__content">
                                 <h1 className="landing-page__intro__content__header">Videogames are art.</h1>
                                 <p>On computers, XBox, PlayStation, Famicom, GameCube, Wii, DS, Switch, and <strong>smartphones</strong>.</p>
