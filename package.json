@@ -9,7 +9,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
-    "next": "11.0.1",
+    "next": "12",
     "next-offline": "^5.0.5",
     "next-page-transitions": "^1.0.0-beta.2",
     "next-sitemap": "^1.1.6",
